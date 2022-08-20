@@ -171,259 +171,259 @@ export default function TeamForm() {
 
     return (
         <Container maxWidth="lg">
-          <Backdrop
-            sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
-            open={submission}
-            onClick={handleClose}
-          >
-            <CircularProgress color="inherit" />
-          </Backdrop>
-    
-    
-          <HeroEditModal open={open} {...heroToEdit} handleClose={handleClose} handleInputChange={handleInputChange} />
-          <Grid2 container spacing={3} paddingTop='2rem' columns={{ xs: 4, sm: 8, md: 12 }} alignItems="stretch">
-            {successfulSubmission ? (
-              <Grid2 item xs={4} md={12}>
-                <Fade in={successfulSubmission}>
-                  <Alert severity="success" id="thisisdumb">Submission Successfully Saved in The Database!</Alert>
-                </Fade>
-              </Grid2>
-            ) : null}
-    
-            <Grid2 item xs={4} md={6}>
-              <Card>
-                <CardContent>
-                  <Typography sx={{ fontSize: 14 }} color="secondary" gutterBottom>
-                    How Does This Work?
-                  </Typography>
-                  <Typography variant='body1'>
-                    The form below allows you to enter information about your team. What sort of content it is for, what heroes, and allows you to personalize the stats of each invidual hero.
-                    Add heroes as needed.
-                  </Typography>
-                </CardContent>
-              </Card>
-            </Grid2>
-            <Grid2 item xs={4} md={6}>
-              <Card>
-                <CardContent>
-                  <Typography sx={{ fontSize: 14 }} color="secondary" gutterBottom>
-                    What Happens After Submitting?
-                  </Typography>
-                  <Typography variant='body1'>
-                    After a successful submission, you&apos;ll be given a URL to view your team directly, or can view it in the database.
-                    The URL can be shared with others or linked in places for reuse.
-                  </Typography>
-                </CardContent>
-              </Card>
-            </Grid2>
-            <Grid2 item xs={4} md={5} mdOffset={1}>
-              <Card>
-                <Typography sx={{ fontSize: 14, textAlign: 'center', paddingTop: '2px' }} color="secondary" gutterBottom>
-                  User Information
-                </Typography>
-                <Grid2 container spacing={2} columns={{ xs: 4, sm: 8, md: 12 }}>
-                  <Grid2 item xs={12}>
-                    <TextField fullWidth label="Username" variant="standard" onChange={(e) => setUserInformation(({ ...userInformation, username: e.target.value }))} />
-                  </Grid2>
-                  <Grid2 item xs={12}>
-                    <FormControl fullWidth variant="standard" sx={{ minWidth: 120 }}>
-                      <InputLabel id="user-server">Server</InputLabel>
-                      <Select
-                        labelId="user-server"
-                        id="userServer"
-                        label="Server"
-                        variant='standard'
-                        onChange={(e) => setUserInformation(({ ...userInformation, server: e.target.value }))}
-                      >
-                        <MenuItem value={'global'}>Global</MenuItem>
-                        <MenuItem value={'korea'}>KR</MenuItem>
-                        <MenuItem value={'other'}>Other</MenuItem>
-                      </Select>
-                    </FormControl>
-                  </Grid2>
-                </Grid2>
-              </Card>
-            </Grid2>
-            <Grid2 item xs={4} md={5}>
-              <Card>
-                <Typography sx={{ fontSize: 14, textAlign: 'center', paddingTop: '2px' }} color="secondary" gutterBottom>
-                  Team Information
-                </Typography>
-                <Grid2 container spacing={2} columns={{ xs: 4, sm: 8, md: 12 }}>
-                  <Grid2 item xs={12}>
-                    <TextField fullWidth label="Team Description" variant="standard" onChange={(e) => setTeamInfo(({ ...teamInfo, teamDescription: e.target.value }))} />
-                  </Grid2>
-                  <Grid2 item xs={12}>
-                    <FormControl fullWidth variant="standard" sx={{ minWidth: 120 }}>
-                      <InputLabel id="team-type">Team Type</InputLabel>
-                      <Select
-                        labelId="team-type"
-                        id="teamType"
-                        label="Team Type"
-                        variant='standard'
-                        onChange={(e) => setTeamInfo(({ ...teamInfo, teamType: e.target.value }))}
-                      >
-                        <MenuItem value={'wyvern'}>Wyvern</MenuItem>
-                        <MenuItem value={'banshee'}>Banshee</MenuItem>
-                        <MenuItem value={'golem'}>Golem</MenuItem>
-                        <MenuItem value={'guildWarDefense'}>Guild War Defense</MenuItem>
-                        <MenuItem value={'guildwarOffense'}>Guild War Offense</MenuItem>
-                        <MenuItem value={'arenaDefense'}>Arena Defense</MenuItem>
-                        <MenuItem value={'arenaOffense'}>Arena Offense</MenuItem>
-                        <MenuItem value={'rta'}>RTA</MenuItem>
-                        <MenuItem value={'abyss'}>Abyss</MenuItem>
-                        <MenuItem value={'adventure'}>Adventure</MenuItem>
-                        <MenuItem value={'other'}>Other</MenuItem>
-                      </Select>
-                    </FormControl>
-                  </Grid2>
-                </Grid2>
-    
-              </Card>
-            </Grid2>
-            <Grid2 item xs={8} md={10} mdOffset={1}>
-              <Card>
-                <Typography sx={{ fontSize: 14, textAlign: 'center', paddingTop: '2px' }} color="secondary" gutterBottom>
-                  Hero Information
-                </Typography>
-                <Grid2 container spacing={1} columns={{ xs: 4, sm: 8, md: 12 }}>
-                  <Grid2 item xs={12} md={3} >
+            <Backdrop
+                sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+                open={submission}
+                onClick={handleClose}
+            >
+                <CircularProgress color="inherit" />
+            </Backdrop>
+
+
+            <HeroEditModal open={open} {...heroToEdit} handleClose={handleClose} handleInputChange={handleInputChange} />
+            <Grid2 container spacing={3} paddingTop='2rem' columns={{ xs: 4, sm: 8, md: 12 }} alignItems="stretch">
+                {successfulSubmission ? (
+                    <Grid2 item xs={4} md={12}>
+                        <Fade in={successfulSubmission}>
+                            <Alert severity="success" variant='outlined' id="thisisdumb">Submission Successfully Saved in The Database!</Alert>
+                        </Fade>
+                    </Grid2>
+                ) : null}
+
+                <Grid2 item xs={4} md={6}>
                     <Card>
-                      <Grid2 container spacing={1}>
-                        <Grid2 item xs={8}>
-
-                            <FormControl fullWidth variant="standard">
-                              <InputLabel id="hero-name">Hero</InputLabel>
-                              <Select
-                                labelId="hero-name"
-                                id="heroName1"
-                                label="Hero Name"
-                                variant='standard'
-                                name='name'
-                                onChange={(e) => handleInputChange(e)}
-                              >
-                                {allHeroInfo.map((heroInfo, index) => (
-                                  <MenuItem key={index} value={heroInfo.value}>{heroInfo.viewValue}</MenuItem>
-                                ))}
-                              </Select>
-                            </FormControl>
-                        </Grid2>
-                        <Grid2 item xs={1} xsOffset={1} mdOffset={1} paddingTop='16px'>
-                          <IconButton
-                            disabled={!initialHero[0].name}
-                            aria-label="delete"
-                            onClick={() => openEditModal()}
-                            color="secondary" >
-                            <EditIcon />
-                          </IconButton>
-                        </Grid2>
-                      </Grid2>
+                        <CardContent>
+                            <Typography sx={{ fontSize: 14 }} color="primary" gutterBottom>
+                                How Does This Work?
+                            </Typography>
+                            <Typography variant='body1'>
+                                The form below allows you to enter information about your team. What sort of content it is for, what heroes, and allows you to personalize the stats of each invidual hero.
+                                Add heroes as needed.
+                            </Typography>
+                        </CardContent>
                     </Card>
-                  </Grid2>
-                  <>
-                    {
-                      heroes.map(
-                        (heroData, index) => (
-                          <Grid2 item xs={12} md={3} key={index}>
-                            <Fade in={heroData}>
-                              <Card key={heroData.id} id={heroData.id}>
-                                <Grid2 container spacing={1}>
-                                  <Grid2 item xs={8}>
-
-                                      <FormControl fullWidth variant="standard">
-                                        <InputLabel id="hero-name">Hero</InputLabel>
-                                        <Select
-                                          labelId="hero-name"
-                                          id="heroName1"
-                                          label="Hero Name"
-                                          variant='standard'
-                                          name='name'
-                                          value={heroData.name}
-                                          onChange={(e) => handleInputChange(e, heroData.id)}
-                                        >
-                                          {allHeroInfo.map((heroInfo, index) => (
-                                            <MenuItem key={index} value={heroInfo.value}>{heroInfo.viewValue}</MenuItem>
-                                          ))}
-                                        </Select>
-                                      </FormControl>
-                                  </Grid2>
-                                  <Grid2 item xs={1} md={1} paddingTop='16px'>
-                                    <IconButton
-                                      disabled={!heroData.name}
-                                      aria-label="delete"
-                                      onClick={() => openEditModal(heroData.id)}
-                                      color="secondary" >
-                                      <EditIcon />
-                                    </IconButton>
-                                  </Grid2>
-                                  <Grid2 item xs={1} xsOffset={1} mdOffset={1} paddingTop='16px'>
-                                    <IconButton
-                                      color="error"
-                                      aria-label="delete"
-                                      onClick={() => removeHero(heroData.id)}
+                </Grid2>
+                <Grid2 item xs={4} md={6}>
+                    <Card>
+                        <CardContent>
+                            <Typography sx={{ fontSize: 14 }} color="primary" gutterBottom>
+                                What Happens After Submitting?
+                            </Typography>
+                            <Typography variant='body1'>
+                                After a successful submission, you&apos;ll be given a URL to view your team directly, or can view it in the database.
+                                The URL can be shared with others or linked in places for reuse.
+                            </Typography>
+                        </CardContent>
+                    </Card>
+                </Grid2>
+                <Grid2 item xs={4} md={5} mdOffset={1}>
+                    <Card>
+                        <CardContent>
+                            <Typography sx={{ fontSize: 17, textAlign: 'center' }} color="text.secondary" gutterBottom>
+                                User Information
+                            </Typography>
+                        </CardContent>
+                        <Grid2 container spacing={2} columns={{ xs: 4, sm: 8, md: 12 }}>
+                            <Grid2 item xs={12}>
+                                <TextField fullWidth label="Username" variant="standard" onChange={(e) => setUserInformation(({ ...userInformation, username: e.target.value }))} />
+                            </Grid2>
+                            <Grid2 item xs={12}>
+                                <FormControl fullWidth variant="standard" sx={{ minWidth: 120 }}>
+                                    <InputLabel id="user-server">Server</InputLabel>
+                                    <Select
+                                        labelId="user-server"
+                                        id="userServer"
+                                        label="Server"
+                                        variant='standard'
+                                        onChange={(e) => setUserInformation(({ ...userInformation, server: e.target.value }))}
                                     >
-                                      <DeleteIcon />
-                                    </IconButton>
-                                  </Grid2>
-                                </Grid2>
-                              </Card>
-                            </Fade>
-                          </Grid2>
-                        ))
-                    }
-                  </>
+                                        <MenuItem value={'global'}>Global</MenuItem>
+                                        <MenuItem value={'korea'}>KR</MenuItem>
+                                        <MenuItem value={'other'}>Other</MenuItem>
+                                    </Select>
+                                </FormControl>
+                            </Grid2>
+                        </Grid2>
+                    </Card>
                 </Grid2>
-                <Grid2 item xs={4} md={3}>
-                  <Paper>
-                    <ButtonGroup variant="text" color='secondary' aria-label="text button group" fullWidth>
-                      <Button
-                        size="small"
-                        onClick={() => {
-                          setHeroes(currentArray =>
-                            [...currentArray, {
-                              id: uuidv4(),
-                              necklaceStat: '',
-                              ringStat: '',
-                              bootStat: '',
-                              name: '',
-                              power: '',
-                              attack: '',
-                              defense: '',
-                              health: '',
-                              speed: '',
-                              criticalHitChance: '',
-                              criticalHitDamage: '',
-                              effectiveness: '',
-                              effectResistance: '',
-                              dualAttackChance: '',
-                            }],
-                          )
-                        }}
-                        disabled={(heroes.length >= 3)}
-                        color="secondary"
-                      >
-                        Add Hero</Button>
-                      <Button
-                      >
-                        Form Menu</Button>
-                    </ButtonGroup>
-                  </Paper>
-    
+                <Grid2 item xs={4} md={5}>
+                    <Card>
+                        <CardContent>
+                            <Typography sx={{ fontSize: 17, textAlign: 'center' }} color="text.secondary" gutterBottom>
+                                Team Information
+                            </Typography>
+                        </CardContent>
+                        <Grid2 container spacing={2} columns={{ xs: 4, sm: 8, md: 12 }}>
+                            <Grid2 item xs={12}>
+                                <TextField fullWidth label="Team Description" variant="standard" onChange={(e) => setTeamInfo(({ ...teamInfo, teamDescription: e.target.value }))} />
+                            </Grid2>
+                            <Grid2 item xs={12}>
+                                <FormControl fullWidth variant="standard" sx={{ minWidth: 120 }}>
+                                    <InputLabel id="team-type">Team Type</InputLabel>
+                                    <Select
+                                        labelId="team-type"
+                                        id="teamType"
+                                        label="Team Type"
+                                        variant='standard'
+                                        onChange={(e) => setTeamInfo(({ ...teamInfo, teamType: e.target.value }))}
+                                    >
+                                        <MenuItem value={'wyvern'}>Wyvern</MenuItem>
+                                        <MenuItem value={'banshee'}>Banshee</MenuItem>
+                                        <MenuItem value={'golem'}>Golem</MenuItem>
+                                        <MenuItem value={'guildWarDefense'}>Guild War Defense</MenuItem>
+                                        <MenuItem value={'guildwarOffense'}>Guild War Offense</MenuItem>
+                                        <MenuItem value={'arenaDefense'}>Arena Defense</MenuItem>
+                                        <MenuItem value={'arenaOffense'}>Arena Offense</MenuItem>
+                                        <MenuItem value={'rta'}>RTA</MenuItem>
+                                        <MenuItem value={'abyss'}>Abyss</MenuItem>
+                                        <MenuItem value={'adventure'}>Adventure</MenuItem>
+                                        <MenuItem value={'other'}>Other</MenuItem>
+                                    </Select>
+                                </FormControl>
+                            </Grid2>
+                        </Grid2>
+
+                    </Card>
                 </Grid2>
-              </Card>
+                <Grid2 item xs={8} md={10} mdOffset={1}>
+                    <Card>
+                        <CardContent>
+                            <Typography sx={{ fontSize: 17, textAlign: 'center' }} color="text.secondary" gutterBottom>
+                                Hero Information
+                            </Typography>
+                        </CardContent>
+                        <Grid2 container spacing={1} columns={{ xs: 4, sm: 8, md: 12 }}>
+                            <Grid2 item xs={12} md={3}>
+                                <Card>
+                                    <Grid2 container spacing={1}>
+                                        <Grid2 item xs={8}>
+                                            <FormControl fullWidth variant="standard">
+                                                <InputLabel id="hero-name">Hero</InputLabel>
+                                                <Select
+                                                    labelId="hero-name"
+                                                    id="heroName1"
+                                                    label="Hero Name"
+                                                    variant='standard'
+                                                    name='name'
+                                                    onChange={(e) => handleInputChange(e)}
+                                                >
+                                                    {allHeroInfo.map((heroInfo, index) => (
+                                                        <MenuItem key={index} value={heroInfo.value}>{heroInfo.viewValue}</MenuItem>
+                                                    ))}
+                                                </Select>
+                                            </FormControl>
+                                        </Grid2>
+                                        <Grid2 item xs={1} xsOffset={1} mdOffset={1} paddingTop='16px'>
+                                            <IconButton
+                                                disabled={!initialHero[0].name}
+                                                aria-label="delete"
+                                                onClick={() => openEditModal()}
+                                                color="secondary" >
+                                                <EditIcon />
+                                            </IconButton>
+                                        </Grid2>
+                                    </Grid2>
+                                </Card>
+                            </Grid2>
+                            <>
+                                {
+                                    heroes.map(
+                                        (heroData, index) => (
+                                            <Grid2 item xs={12} md={3} key={index}>
+                                                <Fade in={heroData}>
+                                                    <Card key={heroData.id} id={heroData.id}>
+                                                        <Grid2 container spacing={1}>
+                                                            <Grid2 item xs={8}>
+
+                                                                <FormControl fullWidth variant="standard">
+                                                                    <InputLabel id="hero-name">Hero</InputLabel>
+                                                                    <Select
+                                                                        labelId="hero-name"
+                                                                        id="heroName1"
+                                                                        label="Hero Name"
+                                                                        variant='standard'
+                                                                        name='name'
+                                                                        value={heroData.name}
+                                                                        onChange={(e) => handleInputChange(e, heroData.id)}
+                                                                    >
+                                                                        {allHeroInfo.map((heroInfo, index) => (
+                                                                            <MenuItem key={index} value={heroInfo.value}>{heroInfo.viewValue}</MenuItem>
+                                                                        ))}
+                                                                    </Select>
+                                                                </FormControl>
+                                                            </Grid2>
+                                                            <Grid2 item xs={1} md={1} paddingTop='16px'>
+                                                                <IconButton
+                                                                    disabled={!heroData.name}
+                                                                    aria-label="delete"
+                                                                    onClick={() => openEditModal(heroData.id)}
+                                                                    color="secondary" >
+                                                                    <EditIcon />
+                                                                </IconButton>
+                                                            </Grid2>
+                                                            <Grid2 item xs={1} xsOffset={1} mdOffset={1} paddingTop='16px'>
+                                                                <IconButton
+                                                                    color="error"
+                                                                    aria-label="delete"
+                                                                    onClick={() => removeHero(heroData.id)}
+                                                                >
+                                                                    <DeleteIcon />
+                                                                </IconButton>
+                                                            </Grid2>
+                                                        </Grid2>
+                                                    </Card>
+                                                </Fade>
+                                            </Grid2>
+                                        ))
+                                }
+                            </>
+                        </Grid2>
+                        <Grid2 item xs={4} md={5} mdOffset={7}>
+                            <Paper>
+                                <ButtonGroup aria-label="text button group" fullWidth>
+                                    <Button
+                                        size="small"
+                                        onClick={() => {
+                                            setHeroes(currentArray =>
+                                                [...currentArray, {
+                                                    id: uuidv4(),
+                                                    necklaceStat: '',
+                                                    ringStat: '',
+                                                    bootStat: '',
+                                                    name: '',
+                                                    power: '',
+                                                    attack: '',
+                                                    defense: '',
+                                                    health: '',
+                                                    speed: '',
+                                                    criticalHitChance: '',
+                                                    criticalHitDamage: '',
+                                                    effectiveness: '',
+                                                    effectResistance: '',
+                                                    dualAttackChance: '',
+                                                }],
+                                            )
+                                        }}
+                                        disabled={(heroes.length >= 3)}
+                                        color="primary"
+                                    >
+                                        Add Hero</Button>
+                                    <Button
+                                                size="small"
+                                                  color="success"
+                                                  fullWidth
+                                                  onClick={(e) => handleSubmit(e)}
+                                    >
+                                        Submit to Database</Button>
+                                </ButtonGroup>
+                            </Paper>
+
+                        </Grid2>
+                        
+                    </Card>
+                </Grid2>
+
             </Grid2>
-            <Grid2 item md={'auto'} xs={4} mdOffset={5}>
-              <Paper elevation={1}>
-                <Button
-                  color="success"
-                  fullWidth
-                  onClick={(e) => handleSubmit(e)}
-                >
-                  Submit To Database
-                </Button>
-              </Paper>
-            </Grid2>
-          </Grid2>
         </Container>
-      )
+    )
 }
