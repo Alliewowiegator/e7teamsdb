@@ -1,7 +1,8 @@
 import React from 'react';
 import Container from '@mui/material/Container';
 import Grid2 from '@mui/material/Unstable_Grid2';
-import { CardContent, Card, Button, Typography, Link } from '@mui/material';
+import { CardContent, Card, Button, Typography, Link as MUILink } from '@mui/material';
+import Link from 'next/link'
 
 export default function Home() {
   return (
@@ -40,8 +41,8 @@ export default function Home() {
                 Quick Actions
               </Typography>
               <Typography variant='body1'>
-                Quickly create and submit a team composition <Link href="/teamform">here</Link>, or click <Link href="/create">here</Link> to view the database.
-                Feedback can be submitted <Link href="/create">here</Link> for any suggestions for changes or improvements.
+                Quickly create and submit a team composition <Link href="/teamform"><MUILink>here</MUILink></Link>, or click <Link href="/create"><MUILink>here</MUILink></Link> to view the database.
+                Feedback can be submitted <Link href="/create"><MUILink>here</MUILink></Link> for any suggestions for changes or improvements.
               </Typography>
             </CardContent>
           </Card>
