@@ -210,7 +210,7 @@ export default function TeamForm() {
                     What Happens After Submitting?
                   </Typography>
                   <Typography variant='body1'>
-                    After a successful submission, you'll be given a URL to view your team directly, or can view it in the database.
+                    After a successful submission, you&apos;ll be given a URL to view your team directly, or can view it in the database.
                     The URL can be shared with others or linked in places for reuse.
                   </Typography>
                 </CardContent>

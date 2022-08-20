@@ -24,7 +24,7 @@ export default function Home() {
           <Card>
             <CardContent>
               <Typography sx={{ fontSize: 14 }} color="secondary" gutterBottom>
-                What's the point?
+                What&apos;s the point?
               </Typography>
               <Typography variant='body1'>
                 Sharing and finding team compositions for certain content can be difficult at times.
