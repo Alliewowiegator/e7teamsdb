@@ -39,7 +39,7 @@ export default function HeroEditModal (props) {
               <Divider />
               <Grid2 container spacing={2} columns={{ xs: 4, sm: 8, md: 12 }}>
                 <Grid2 item md={3} mdOffset={1.5} xs={4}>
-
+                  <FormControl fullWidth variant="standard" sx={{ minWidth: 120 }}>
                     <InputLabel id="necklace-main">Necklace Main Stat</InputLabel>
                     <Select
                       name="necklaceStat"
@@ -59,10 +59,10 @@ export default function HeroEditModal (props) {
                       <MenuItem value={'Attack %'}>Attack %</MenuItem>
                       <MenuItem value={'Attack'}>Attack</MenuItem>
                     </Select>
-
+                  </FormControl>
                 </Grid2>
                 <Grid2 item md={3} xs={4}>
-
+                  <FormControl fullWidth variant="standard" sx={{ minWidth: 120 }}>
                     <InputLabel id="ring-stat">Ring Main Stat</InputLabel>
                     <Select
                       name="ringStat" 
@@ -82,10 +82,10 @@ export default function HeroEditModal (props) {
                       <MenuItem value={'Defense %'}>Defense %</MenuItem>
                       <MenuItem value={'Defense'}>Defense</MenuItem>
                     </Select>
-
+                  </FormControl>
                 </Grid2>
                 <Grid2 item md={3} xs={4}>
-
+                  <FormControl fullWidth variant="standard" sx={{ minWidth: 120 }}>
                     <InputLabel id="boot-stat">Boot Main Stat</InputLabel>
                     <Select
                       name="bootStat"
@@ -104,7 +104,7 @@ export default function HeroEditModal (props) {
                       <MenuItem value={'Defense %'}>Defense %</MenuItem>
                       <MenuItem value={'Defense'}>Defense</MenuItem>
                     </Select>
-
+                  </FormControl>
                 </Grid2>
                 <Grid2 item md={12} xs={4}>
                   <Divider />
