@@ -13,10 +13,11 @@ import { useEffect, useState } from 'react';
 import HeroEditModal from './HeroEditModal';
 
 export default function TeamForm() {
+    // State variables
     const [successfulSubmission, setSuccessfulSubmission] = useState(false);
     const [submission, setSubmission] = useState(false);
-    const [heroes, setHeroes] = useState([]);
     const [heroToEdit, setEditHero] = useState({})
+    const [heroes, setHeroes] = useState([]);
     const [open, setOpen] = useState(false);
     const [userInformation, setUserInformation] = useState([{
         username: "",
@@ -28,8 +29,6 @@ export default function TeamForm() {
         teamDescription: ""
     })
 
-    const handleClose = () => setOpen(false);
-    const handleOpen = () => setOpen(true);
     const [initialHero, setInitialHero] = useState([{
         necklaceStat: '',
         ringStat: '',
@@ -47,6 +46,10 @@ export default function TeamForm() {
         dualAttackChance: '',
     }])
 
+
+
+    const handleClose = () => setOpen(false);
+    const handleOpen = () => setOpen(true);
     async function heroBuilder() {
         let heroObject = {
             "heroes": [{
@@ -119,9 +122,9 @@ export default function TeamForm() {
     }
 
     useEffect(() => {
-        const alert = document.getElementById('thisisdumb');
+        const alert = document.getElementById('submission-alert');
         if (alert) {
-            alert.scrollIntoView({ block: 'start', behavior: 'smooth' });
+            alert.scrollIntoView({ block: 'center', behavior: 'smooth' });
         }
 
         return () => {
@@ -185,7 +188,7 @@ export default function TeamForm() {
                 {successfulSubmission ? (
                     <Grid2 item xs={4} md={12}>
                         <Fade in={successfulSubmission}>
-                            <Alert severity="success" variant='outlined' id="thisisdumb">Submission Successfully Saved in The Database!</Alert>
+                            <Alert severity="success" variant='outlined' id="submission-alert">Submission Successfully Saved in The Database!</Alert>
                         </Fade>
                     </Grid2>
                 ) : null}
