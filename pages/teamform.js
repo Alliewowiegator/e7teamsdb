@@ -137,7 +137,7 @@ export default function TeamForm() {
         if (heroIndex >= 0) {
             let hero = heroes[heroIndex].id
             const heroElement = document.getElementById(`${hero}`);
-            heroElement.scrollIntoView({ behavior: 'smooth' })
+            heroElement.scrollIntoView({ block: 'center' ,behavior: 'smooth' })
         }
 
         return () => {
@@ -186,11 +186,11 @@ export default function TeamForm() {
             <HeroEditModal open={open} {...heroToEdit} handleClose={handleClose} handleInputChange={handleInputChange} />
             <Grid2 container spacing={3} paddingTop='2rem' columns={{ xs: 4, sm: 8, md: 12 }} alignItems="stretch">
                 {successfulSubmission ? (
-                    <Grid2 item xs={4} md={12}>
-                        <Fade in={successfulSubmission}>
+                    <Fade in={successfulSubmission}>
+                        <Grid2 item xs={4} md={12}>
                             <Alert severity="success" variant='outlined' id="submission-alert">Submission Successfully Saved in The Database!</Alert>
-                        </Fade>
-                    </Grid2>
+                        </Grid2>
+                    </Fade>
                 ) : null}
 
                 <Grid2 item xs={4} md={6}>
@@ -342,7 +342,7 @@ export default function TeamForm() {
                                                                     <InputLabel id="hero-name">Hero</InputLabel>
                                                                     <Select
                                                                         labelId="hero-name"
-                                                                        id="heroName1"
+                                                                        id={`heroName${index}`}
                                                                         label="Hero Name"
                                                                         variant='standard'
                                                                         name='name'
@@ -358,7 +358,7 @@ export default function TeamForm() {
                                                             <Grid2 item xs={1} md={1} paddingTop='16px'>
                                                                 <IconButton
                                                                     disabled={!heroData.name}
-                                                                    aria-label="delete"
+                                                                    aria-label="edit"
                                                                     onClick={() => openEditModal(heroData.id)}
                                                                     color="secondary" >
                                                                     <EditIcon />

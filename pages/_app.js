@@ -6,6 +6,7 @@ import { CacheProvider } from '@emotion/react';
 import { createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import createEmotionCache from '../utility/createEmotionCache';
+import Footer from './footer';
 
 const clientSideEmotionCache = createEmotionCache();
 const darkTheme = createTheme({
@@ -13,7 +14,6 @@ const darkTheme = createTheme({
     mode: 'dark',
   },
 });
-
 
 const MyApp = (props) => {
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
@@ -25,7 +25,7 @@ const MyApp = (props) => {
         <Component {...pageProps} />
       </ThemeProvider>
     </CacheProvider>
-
+  
   )
 }
 
