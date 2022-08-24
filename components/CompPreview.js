@@ -3,7 +3,7 @@ import Grid2 from '@mui/material/Unstable_Grid2';
 import Container from '@mui/material/Container';
 import {
     Card, CardContent, Typography, CardActions,
-    Avatar, Stack, Button, IconButton
+    Avatar, Stack, Button, IconButton, Divider
 } from '@mui/material';
 import LinkIcon from '@mui/icons-material/Link';
 import { allHeroInfo } from '../data/heroData'
@@ -16,28 +16,31 @@ export default function CompPreview(props) {
     }
 
     return (
-
+        <Container maxWidth='lg'>
             <Card>
                 <CardContent>
-                    <Typography sx={{ fontSize: 14 }} color="primary" gutterBottom>
+                    <Typography  sx={{ fontSize: 15 }} color="primary" gutterBottom>
                         {props.teamInfo.teamType}
                     </Typography>
-                    <Typography sx={{ fontSize: 14 }} color="primary" gutterBottom>
-                        Heroes
-                    </Typography>
-                    <Stack direction="row" spacing={2}>
+                    <Stack direction="row"  spacing={2} paddingBottom='.5rem' divider={<Divider orientation="vertical" flexItem />}>
                         {
                             props.heroes.map((hero, index) => (
                                 <Avatar key={index} src={getHeroPortrait(hero.name)}></Avatar>
                             ))
                         }
                     </Stack>
-                    <Typography sx={{ fontSize: 14 }} color="primary" gutterBottom>
-                        Heroes
+
+                    <Typography sx={{ fontSize: 14 }} color="secondary">
+                        Description
                     </Typography>
-                    <Typography variant='body1'>
+                    <Typography variant='body2' gutterBottom>
                         {props.teamInfo.teamDescription}
                     </Typography>
+                    <Typography sx={{ fontSize: 12 }} color="secondary">
+                        {props.userInfo.username}
+                    </Typography>
+
+                    
                 </CardContent>
                 <CardActions>
                     <Button size="small">View Composition</Button>
@@ -47,9 +50,9 @@ export default function CompPreview(props) {
                         color="secondary" >
                         <LinkIcon />
                     </IconButton>
+
                 </CardActions>
             </Card>
-
-
+        </Container>
     )
 }
