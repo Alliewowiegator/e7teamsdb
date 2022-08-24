@@ -10,7 +10,7 @@ import DeleteIcon from '@mui/icons-material/Delete'
 import EditIcon from '@mui/icons-material/Edit';
 import { allHeroInfo } from '../data/heroData'
 import { useEffect, useState } from 'react';
-import HeroEditModal from './HeroEditModal';
+import HeroEditModal from '../components/HeroEditModal';
 
 export default function TeamForm() {
     // State variables
@@ -113,8 +113,8 @@ export default function TeamForm() {
             }
             setSubmission(false);
 
-            setSuccessfulSubmission(true);
-
+            setSuccessfulSubmission(true);  
+            console.log(newTeam);
             setTimeout(() => {
                 setSuccessfulSubmission(false);
             }, 5000)

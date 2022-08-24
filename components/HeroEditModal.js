@@ -8,6 +8,7 @@ import {
 import { allHeroInfo } from '../data/heroData'
 
 export default function HeroEditModal (props) {
+  
 
   function getHeroPortrait(heroName) {
     let heroToReturn = allHeroInfo.find(hero => hero.value === heroName);

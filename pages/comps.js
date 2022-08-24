@@ -5,16 +5,97 @@ import {
     Card, CardContent, Typography,
     InputLabel, Select, OutlinedInput,
     Box, Chip, MenuItem, FormControl,
-    IconButton, CardActions, Button, Paper
+    IconButton, CardActions, Button, Paper, Avatar
 } from '@mui/material';
-import EditIcon from '@mui/icons-material/Edit';
-import { DataGrid } from '@mui/x-data-grid';
-import LinkIcon from '@mui/icons-material/Link';
+
 import RefreshIcon from '@mui/icons-material/Refresh';
+import CompPreview from '../components/CompPreview';
 
 
 
 export default function Comps() {
+    const testData = {
+        "userInfo": {
+            "username": "123123",
+            "server": "korea"
+        },
+        "teamInfo": {
+            "teamType": "Banshee One Shot",
+            "teamDescription": "Simple oneshot team"
+        },
+        "heroes": [
+            {
+                "id": "0f4a3193-8856-4549-b6e2-0d039dec7a12",
+                "necklaceStat": "",
+                "ringStat": "",
+                "bootStat": "",
+                "name": "Assassin Coli",
+                "power": "",
+                "attack": "",
+                "defense": "",
+                "health": "",
+                "speed": "",
+                "criticalHitChance": "",
+                "criticalHitDamage": "",
+                "effectiveness": "",
+                "effectResistance": "",
+                "dualAttackChance": ""
+            },
+            {
+                "id": "563ff037-1de2-48e0-93c9-85f14af4994c",
+                "necklaceStat": "",
+                "ringStat": "",
+                "bootStat": "",
+                "name": "All-Rounder Wanda",
+                "power": "",
+                "attack": "",
+                "defense": "",
+                "health": "",
+                "speed": "",
+                "criticalHitChance": "",
+                "criticalHitDamage": "",
+                "effectiveness": "",
+                "effectResistance": "",
+                "dualAttackChance": ""
+            },
+            {
+                "id": "4b8dbc60-eb9d-44bb-a320-4fbf46ecd324",
+                "necklaceStat": "",
+                "ringStat": "",
+                "bootStat": "",
+                "name": "Armin",
+                "power": "",
+                "attack": "",
+                "defense": "",
+                "health": "",
+                "speed": "",
+                "criticalHitChance": "",
+                "criticalHitDamage": "",
+                "effectiveness": "",
+                "effectResistance": "",
+                "dualAttackChance": ""
+            },
+            {
+                "id": "dba38b16-c528-4488-927c-a8b1c939e4e8",
+                "necklaceStat": "",
+                "ringStat": "",
+                "bootStat": "",
+                "name": "Assassin Coli",
+                "power": "",
+                "attack": "",
+                "defense": "",
+                "health": "",
+                "speed": "",
+                "criticalHitChance": "",
+                "criticalHitDamage": "",
+                "effectiveness": "",
+                "effectResistance": "",
+                "dualAttackChance": ""
+            }
+        ]
+    }
+
+
     return (
         <Container maxWidth='lg'>
             <Grid2 container spacing={3} paddingTop='2rem' columns={{ xs: 4, sm: 8, md: 12 }} alignItems="stretch">
@@ -40,7 +121,7 @@ export default function Comps() {
                                 Team Compositions
                             </Typography>
                             <Grid2 container spacing={1} columns={{ xs: 4, sm: 8, md: 12 }} alignItems="stretch">
-                                <Grid2 item md={3} >
+                                <Grid2 item md={3} xs={4} >
                                     <FormControl fullWidth>
                                         <InputLabel id="demo-multiple-chip-label">Filter By Content</InputLabel>
                                         <Select
@@ -63,7 +144,7 @@ export default function Comps() {
                                         </Select>
                                     </FormControl>
                                 </Grid2>
-                                <Grid2 item md={3}>
+                                <Grid2 item md={3} xs={4}>
                                     <FormControl fullWidth>
                                         <InputLabel id="demo-multiple-chip-label">Filter By Hero</InputLabel>
                                         <Select
@@ -82,7 +163,7 @@ export default function Comps() {
                                         </Select>
                                     </FormControl>
                                 </Grid2>
-                                <Grid2 item md={3}>
+                                <Grid2 item md={3} xs={4}>
                                     <FormControl fullWidth>
                                         <InputLabel id="demo-multiple-chip-label">Filter By Something</InputLabel>
                                         <Select
@@ -94,7 +175,7 @@ export default function Comps() {
                                         </Select>
                                     </FormControl>
                                 </Grid2>
-                                <Grid2 item md={1} mdOffset={2}>
+                                <Grid2 item md={1} mdOffset={2} xsOffset={1.70}>
                                     <IconButton
                                         size='large'
                                         aria-label="delete"
@@ -103,101 +184,8 @@ export default function Comps() {
                                     </IconButton>
                                 </Grid2>
                                 <Grid2 container spacing={3} paddingTop='2rem' columns={{ xs: 4, sm: 8, md: 12 }} alignItems="stretch">
-                                    <Grid2 item md={3} xs={4}>
-                                        <Card>
-                                            <CardContent>
-                                                <Typography sx={{ fontSize: 14 }} color="primary" gutterBottom>
-                                                    Banshee One Shot
-                                                </Typography>
-                                                <Typography sx={{ fontSize: 14 }} color="primary">
-                                                    Heroes
-                                                </Typography>
-                                                <Typography variant='body1'>
-                                                    Arbiter Vildred, Rem, Senya, Angelica
-                                                </Typography>
-                                            </CardContent>
-                                            <CardActions>
-                                                <Button size="small">View Composition</Button>
-                                                <IconButton
-                                                    size='small'
-                                                    aria-label="delete"
-                                                    color="secondary" >
-                                                    <LinkIcon />
-                                                </IconButton>
-                                            </CardActions>
-                                        </Card>
-                                    </Grid2>
-                                    <Grid2 item md={3} xs={4}>
-                                        <Card>
-                                            <CardContent>
-                                                <Typography sx={{ fontSize: 14 }} color="primary" gutterBottom>
-                                                    Banshee One Shot
-                                                </Typography>
-                                                <Typography sx={{ fontSize: 14 }} color="primary">
-                                                    Heroes
-                                                </Typography>
-                                                <Typography variant='body1'>
-                                                    Arbiter Vildred, Rem, Senya, Angelica
-                                                </Typography>
-                                            </CardContent>
-                                            <CardActions>
-                                                <Button size="small">View Composition</Button>
-                                                <IconButton
-                                                    size='small'
-                                                    aria-label="delete"
-                                                    color="secondary" >
-                                                    <LinkIcon />
-                                                </IconButton>
-                                            </CardActions>
-                                        </Card>
-                                    </Grid2>
-                                    <Grid2 item md={3} xs={4}>
-                                        <Card>
-                                            <CardContent>
-                                                <Typography sx={{ fontSize: 14 }} color="primary" gutterBottom>
-                                                    Banshee One Shot
-                                                </Typography>
-                                                <Typography sx={{ fontSize: 14 }} color="primary">
-                                                    Heroes
-                                                </Typography>
-                                                <Typography variant='body1'>
-                                                    Arbiter Vildred, Rem, Senya, Angelica
-                                                </Typography>
-                                            </CardContent>
-                                            <CardActions>
-                                                <Button size="small">View Composition</Button>
-                                                <IconButton
-                                                    size='small'
-                                                    aria-label="delete"
-                                                    color="secondary" >
-                                                    <LinkIcon />
-                                                </IconButton>
-                                            </CardActions>
-                                        </Card>
-                                    </Grid2>
-                                    <Grid2 item md={3} xs={4}>
-                                        <Card>
-                                            <CardContent>
-                                                <Typography sx={{ fontSize: 14 }} color="primary" gutterBottom>
-                                                    Banshee One Shot
-                                                </Typography>
-                                                <Typography sx={{ fontSize: 14 }} color="primary">
-                                                    Heroes
-                                                </Typography>
-                                                <Typography variant='body1'>
-                                                    Arbiter Vildred, Rem, Senya, Angelica
-                                                </Typography>
-                                            </CardContent>
-                                            <CardActions>
-                                                <Button size="small">View Composition</Button>
-                                                <IconButton
-                                                    size='small'
-                                                    aria-label="delete"
-                                                    color="secondary" >
-                                                    <LinkIcon />
-                                                </IconButton>
-                                            </CardActions>
-                                        </Card>
+                                    <Grid2 item xs={4} md={12}>
+                                        <CompPreview {...testData} />
                                     </Grid2>
                                 </Grid2>
                             </Grid2>
