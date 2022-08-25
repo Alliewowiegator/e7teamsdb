@@ -145,7 +145,7 @@ export default function TeamForm() {
 
       setTimeout(() => {
         setSuccessfulSubmission(false);
-      }, 3000)
+      }, 7000)
 
     } catch (error) {
       console.log(error);
