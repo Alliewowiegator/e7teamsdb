@@ -129,7 +129,7 @@ export default function TeamForm() {
     };
 
     try {
-      const res = await fetch("http://localhost:3000/api/allComps", {
+      const res = await fetch("https://e7teamsdb.herokuapp.com/api/allComps", {
         method: "POST",
         headers: {
           Accept: "application/json",
