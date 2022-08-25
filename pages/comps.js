@@ -5,7 +5,7 @@ import {
     Card, CardContent, Typography,
     InputLabel, Select, OutlinedInput,
     Box, Chip, MenuItem, FormControl,
-    IconButton, CardActions, Button, Paper, Avatar
+    IconButton, CardActions, Button, Paper, Avatar, Divider
 } from '@mui/material';
 
 import RefreshIcon from '@mui/icons-material/Refresh';
@@ -13,249 +13,7 @@ import CompPreview from '../components/CompPreview';
 
 
 
-export default function Comps() {
-    const testData = [{
-        "userInfo": {
-            "username": "AbyssMain",
-            "server": "korea"
-        },
-        "teamInfo": {
-            "teamType": "Abyss",
-            "teamDescription": "Abyss Floor 999"
-        },
-        "heroes": [
-            {
-                "id": "0f4a3193-8856-4549-b6e2-0d039dec7a12",
-                "necklaceStat": "",
-                "ringStat": "",
-                "bootStat": "",
-                "name": "Arbiter Vildred",
-                "power": "",
-                "attack": "",
-                "defense": "",
-                "health": "",
-                "speed": "",
-                "criticalHitChance": "",
-                "criticalHitDamage": "",
-                "effectiveness": "",
-                "effectResistance": "",
-                "dualAttackChance": ""
-            },
-            {
-                "id": "563ff037-1de2-48e0-93c9-85f14af4994c",
-                "necklaceStat": "",
-                "ringStat": "",
-                "bootStat": "",
-                "name": "Crimson Armin",
-                "power": "",
-                "attack": "",
-                "defense": "",
-                "health": "",
-                "speed": "",
-                "criticalHitChance": "",
-                "criticalHitDamage": "",
-                "effectiveness": "",
-                "effectResistance": "",
-                "dualAttackChance": ""
-            },
-            {
-                "id": "4b8dbc60-eb9d-44bb-a320-4fbf46ecd324",
-                "necklaceStat": "",
-                "ringStat": "",
-                "bootStat": "",
-                "name": "Armin",
-                "power": "",
-                "attack": "",
-                "defense": "",
-                "health": "",
-                "speed": "",
-                "criticalHitChance": "",
-                "criticalHitDamage": "",
-                "effectiveness": "",
-                "effectResistance": "",
-                "dualAttackChance": ""
-            },
-            {
-                "id": "dba38b16-c528-4488-927c-a8b1c939e4e8",
-                "necklaceStat": "",
-                "ringStat": "",
-                "bootStat": "",
-                "name": "Kise",
-                "power": "",
-                "attack": "",
-                "defense": "",
-                "health": "",
-                "speed": "",
-                "criticalHitChance": "",
-                "criticalHitDamage": "",
-                "effectiveness": "",
-                "effectResistance": "",
-                "dualAttackChance": ""
-            }
-        ]
-    },
-    {
-        "userInfo": {
-            "username": "Allie",
-            "server": "korea"
-        },
-        "teamInfo": {
-            "teamType": "Banshee One Shot",
-            "teamDescription": "Simple oneshot team"
-        },
-        "heroes": [
-            {
-                "id": "0f4a3193-8856-4549-b6e2-0d039dec7a12",
-                "necklaceStat": "",
-                "ringStat": "",
-                "bootStat": "",
-                "name": "Assassin Coli",
-                "power": "",
-                "attack": "",
-                "defense": "",
-                "health": "",
-                "speed": "",
-                "criticalHitChance": "",
-                "criticalHitDamage": "",
-                "effectiveness": "",
-                "effectResistance": "",
-                "dualAttackChance": ""
-            },
-            {
-                "id": "563ff037-1de2-48e0-93c9-85f14af4994c",
-                "necklaceStat": "",
-                "ringStat": "",
-                "bootStat": "",
-                "name": "All-Rounder Wanda",
-                "power": "",
-                "attack": "",
-                "defense": "",
-                "health": "",
-                "speed": "",
-                "criticalHitChance": "",
-                "criticalHitDamage": "",
-                "effectiveness": "",
-                "effectResistance": "",
-                "dualAttackChance": ""
-            },
-            {
-                "id": "4b8dbc60-eb9d-44bb-a320-4fbf46ecd324",
-                "necklaceStat": "",
-                "ringStat": "",
-                "bootStat": "",
-                "name": "Armin",
-                "power": "",
-                "attack": "",
-                "defense": "",
-                "health": "",
-                "speed": "",
-                "criticalHitChance": "",
-                "criticalHitDamage": "",
-                "effectiveness": "",
-                "effectResistance": "",
-                "dualAttackChance": ""
-            },
-            {
-                "id": "dba38b16-c528-4488-927c-a8b1c939e4e8",
-                "necklaceStat": "",
-                "ringStat": "",
-                "bootStat": "",
-                "name": "Assassin Coli",
-                "power": "",
-                "attack": "",
-                "defense": "",
-                "health": "",
-                "speed": "",
-                "criticalHitChance": "",
-                "criticalHitDamage": "",
-                "effectiveness": "",
-                "effectResistance": "",
-                "dualAttackChance": ""
-            }
-        ]
-    },
-    {
-        "userInfo": {
-            "username": "SomeUsername",
-            "server": "korea"
-        },
-        "teamInfo": {
-            "teamType": "Arena Defense",
-            "teamDescription": "The best team alive"
-        },
-        "heroes": [
-            {
-                "id": "0f4a3193-8856-4549-b6e2-0d039dec7a12",
-                "necklaceStat": "",
-                "ringStat": "",
-                "bootStat": "",
-                "name": "Angelica",
-                "power": "",
-                "attack": "",
-                "defense": "",
-                "health": "",
-                "speed": "",
-                "criticalHitChance": "",
-                "criticalHitDamage": "",
-                "effectiveness": "",
-                "effectResistance": "",
-                "dualAttackChance": ""
-            },
-            {
-                "id": "563ff037-1de2-48e0-93c9-85f14af4994c",
-                "necklaceStat": "",
-                "ringStat": "",
-                "bootStat": "",
-                "name": "Purrgis",
-                "power": "",
-                "attack": "",
-                "defense": "",
-                "health": "",
-                "speed": "",
-                "criticalHitChance": "",
-                "criticalHitDamage": "",
-                "effectiveness": "",
-                "effectResistance": "",
-                "dualAttackChance": ""
-            },
-            {
-                "id": "4b8dbc60-eb9d-44bb-a320-4fbf46ecd324",
-                "necklaceStat": "",
-                "ringStat": "",
-                "bootStat": "",
-                "name": "Jecht",
-                "power": "",
-                "attack": "",
-                "defense": "",
-                "health": "",
-                "speed": "",
-                "criticalHitChance": "",
-                "criticalHitDamage": "",
-                "effectiveness": "",
-                "effectResistance": "",
-                "dualAttackChance": ""
-            },
-            {
-                "id": "dba38b16-c528-4488-927c-a8b1c939e4e8",
-                "necklaceStat": "",
-                "ringStat": "",
-                "bootStat": "",
-                "name": "Cidd",
-                "power": "",
-                "attack": "",
-                "defense": "",
-                "health": "",
-                "speed": "",
-                "criticalHitChance": "",
-                "criticalHitDamage": "",
-                "effectiveness": "",
-                "effectResistance": "",
-                "dualAttackChance": ""
-            }
-        ]
-    }]
-
-
+const Comps = ({ compData }) => {
     return (
         <Container maxWidth='lg'>
             <Grid2 container spacing={3} paddingTop='2rem' columns={{ xs: 4, sm: 8, md: 12 }} alignItems="stretch">
@@ -343,9 +101,12 @@ export default function Comps() {
                                         <RefreshIcon />
                                     </IconButton>
                                 </Grid2>
+                                <Grid2 item md={12} xs={4}>
+                                    <Divider />
+                                </Grid2>
                                 <Grid2 container spacing={3} md={12} xs={4} paddingTop='2rem' columns={{ xs: 4, sm: 8, md: 12 }} alignItems="stretch">
                                     {
-                                        testData.map((hero, index) => (
+                                        compData.map((hero, index) => (
                                             <Grid2 key={index} item md={4} xs={4}>
                                                 <CompPreview {...hero}></CompPreview>
                                             </Grid2>
@@ -360,3 +121,13 @@ export default function Comps() {
         </Container>
     )
 }
+    
+
+Comps.getInitialProps = async () => {
+    const res = await fetch('http://localhost:3000/api/allComps');
+    const { data } = await res.json();
+
+    return { compData: data };
+}
+
+export default Comps;

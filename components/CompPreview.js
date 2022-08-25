@@ -6,12 +6,12 @@ import {
     Avatar, Stack, Button, IconButton, Divider
 } from '@mui/material';
 import LinkIcon from '@mui/icons-material/Link';
-import { allHeroInfo } from '../data/heroData'
+import { allHeroInfo } from '../data/heroData';
 
 export default function CompPreview(props) {
 
     function getHeroPortrait(heroName) {
-        let heroToReturn = allHeroInfo.find(hero => hero.value === heroName);
+        let heroToReturn = allHeroInfo.find((hero) => hero.value === heroName);
         return heroToReturn.thumbnail;
     }
 
@@ -19,10 +19,10 @@ export default function CompPreview(props) {
         <Container maxWidth='lg'>
             <Card>
                 <CardContent>
-                    <Typography  sx={{ fontSize: 15 }} color="primary" gutterBottom>
+                    <Typography sx={{ fontSize: 15 }} color="primary" gutterBottom>
                         {props.teamInfo.teamType}
                     </Typography>
-                    <Stack direction="row"  spacing={2} paddingBottom='.5rem' divider={<Divider orientation="vertical" flexItem />}>
+                    <Stack direction="row" spacing={2} paddingBottom='.5rem' divider={<Divider orientation="vertical" flexItem />}>
                         {
                             props.heroes.map((hero, index) => (
                                 <Avatar key={index} src={getHeroPortrait(hero.name)}></Avatar>
@@ -36,11 +36,9 @@ export default function CompPreview(props) {
                     <Typography variant='body2' gutterBottom>
                         {props.teamInfo.teamDescription}
                     </Typography>
-                    <Typography sx={{ fontSize: 12 }} color="secondary">
-                        {props.userInfo.username}
-                    </Typography>
 
-                    
+
+
                 </CardContent>
                 <CardActions>
                     <Button size="small">View Composition</Button>
@@ -49,8 +47,11 @@ export default function CompPreview(props) {
                         aria-label="delete"
                         color="secondary" >
                         <LinkIcon />
-                    </IconButton>
 
+                    </IconButton>
+                    <Typography sx={{ fontSize: 12 }} color="secondary">
+                        {props.userInfo.username}
+                    </Typography>
                 </CardActions>
             </Card>
         </Container>
