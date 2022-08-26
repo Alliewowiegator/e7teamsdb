@@ -70,7 +70,7 @@ const Navbar = () => {
             >
               {pages.map((page) => (
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center"><Link href={page == 'New Composition' ? "/teamform" : "/comps"}>{page}</Link></Typography>
+                  <Typography textAlign="center"><Link href={page == 'New Composition' ? "/teamform" : "/comps"} prefetch={true}>{page}</Link></Typography>
                 </MenuItem>
               ))}
             </Menu>
@@ -118,7 +118,7 @@ const Navbar = () => {
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: "white", display: "block" }}
               >
-                <Link href={page == 'New Composition' ? "/teamform" : "/comps"}>{page}</Link>
+                <Link href={page == 'New Composition' ? "/teamform" : "/comps"} prefetch={true}>{page}</Link>
               </Button>
             ))}
           </Box>
