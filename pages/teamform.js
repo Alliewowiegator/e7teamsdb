@@ -170,11 +170,6 @@ export default function TeamForm() {
         setSubmissionErrors('Error during submission...')
       }
     }
-
-    if (submissionErrors) {
-      const alertFailure = document.getElementById("submission-error");
-      alertFailure.scrollIntoView({ block: "center", behavior: "smooth" });
-    }
   }
 
   useEffect(() => {
@@ -187,6 +182,17 @@ export default function TeamForm() {
       console.log("Cleanup");
     };
   });
+
+  useEffect(() => {
+    const alertFailure = document.getElementById("submission-error");
+    if (alertFailure) {
+      alertFailure.scrollIntoView({ block: "center", behavior: "smooth" });
+    }
+
+    return () => {
+      console.log("Cleanup");
+    };
+  }, [submissionErrors])
 
   useEffect(() => {
     const heroIndex = heroes.length - 1;
