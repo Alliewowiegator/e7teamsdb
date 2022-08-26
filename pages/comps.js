@@ -21,7 +21,6 @@ const Comps = ({ compData }) => {
     const [contentFilter, setContentFilter] = useState("");
 
     const filteredContent = () => {
-        console.log('called')
         if (filteredData.length <= 0) {
             return (
                 <Grid2 item md={12} xs={4}>
@@ -45,6 +44,8 @@ const Comps = ({ compData }) => {
         if (contentFilter) {
             setFilteredData(compData.filter(composition => composition.teamInfo.teamType === contentFilter));
             console.log(filteredData);
+        } else {
+            setFilteredData(compData);
         }
     }, [contentFilter])
 
@@ -71,7 +72,6 @@ const Comps = ({ compData }) => {
                         </CardContent>
                     </Card>
                 </Grid2>
-                <Grid2 item md={12}></Grid2>
                 <Grid2 item xs={4} md={12}>
                     <Card>
                         <CardContent>
@@ -86,15 +86,15 @@ const Comps = ({ compData }) => {
                             >
                                 <Grid2 item md={3} xs={4}>
                                     <FormControl fullWidth>
-                                        <InputLabel id="demo-multiple-chip-label">
+                                        <InputLabel id="content-filter">
                                             Filter By Content
                                         </InputLabel>
                                         <Select
                                             onChange={(e) =>
                                                 setContentFilter(e.target.value)
                                             }
-                                            labelId="demo-multiple-chip-label"
-                                            id="demo-multiple-chip"
+                                            labelId="content-filter"
+                                            id="content-filter"
                                             input={
                                                 <OutlinedInput
                                                     id="select-multiple-chip"
@@ -102,6 +102,7 @@ const Comps = ({ compData }) => {
                                                 />
                                             }
                                         >
+                                            <MenuItem value={""}><em>None</em></MenuItem>
                                             <MenuItem value={"Wyvern"}>Wyvern</MenuItem>
                                             <MenuItem value={"Banshee"}>Banshee</MenuItem>
                                             <MenuItem value={"Golem"}>Golem</MenuItem>

@@ -17,7 +17,7 @@ export default function CompPreview(props) {
 
     return (
         <Container maxWidth='lg'>
-            <Card>
+            <Card sx= {{ backgroundColor: '#1e1e1e' }}>
                 <CardContent>
                     <Typography sx={{ fontSize: 15 }} color="primary" gutterBottom>
                         {props.teamInfo.teamType}
@@ -29,7 +29,6 @@ export default function CompPreview(props) {
                             ))
                         }
                     </Stack>
-
                     <Typography sx={{ fontSize: 14 }} color="secondary">
                         Description
                     </Typography>
