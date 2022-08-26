@@ -253,7 +253,7 @@ export default function TeamForm() {
       />
       <Grid2
         container
-        spacing={3}
+        spacing={2}
         paddingTop="2rem"
         columns={{ xs: 4, sm: 8, md: 12 }}
         alignItems="stretch"
