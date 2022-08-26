@@ -19,6 +19,7 @@ import {
   CircularProgress,
   Backdrop,
   Alert,
+  AlertTitle
 } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
@@ -28,6 +29,7 @@ import HeroEditModal from "../components/HeroEditModal";
 
 export default function TeamForm() {
   // State variables
+  const [submissionErrors, setSubmissionErrors] = useState('');
   const [successfulSubmission, setSuccessfulSubmission] = useState(false);
   const [submission, setSubmission] = useState(false);
   const [heroToEdit, setEditHero] = useState({});
@@ -114,7 +116,9 @@ export default function TeamForm() {
 
   async function handleSubmit(e) {
     e.preventDefault();
+    setSubmissionErrors('');
     setSubmission(true);
+
     const heroesObject = await heroBuilder();
     const newTeam = {
       userInfo: {
@@ -128,27 +132,38 @@ export default function TeamForm() {
       heroes: heroesObject.heroes,
     };
 
-    try {
-      const res = await fetch("https://e7teamsdb.herokuapp.com/api/allComps", {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(newTeam),
-      });
-
-      setTimeout(() => {
-        setSubmission(false);
-        setSuccessfulSubmission(true);
-      }, 3000)
-
-      setTimeout(() => {
-        setSuccessfulSubmission(false);
-      }, 7000)
-
-    } catch (error) {
-      console.log(error);
+    if ((!newTeam.userInfo.username) || (!newTeam.userInfo.server)) {
+      setSubmissionErrors('Missing username or server information...');
+      setSubmission(false);
+    } else if ((!newTeam.teamInfo.teamType) || (!newTeam.teamInfo.teamDescription)) {
+      setSubmissionErrors('Missing team type or description...');
+      setSubmission(false);
+    } else if (!newTeam.heroes[0].name) {
+      setSubmissionErrors('At least one hero needs to be selected...');
+      setSubmission(false);
+    } else {
+      try {
+        const res = await fetch("https://e7teamsdb.herokuapp.com/api/allComps", {
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(newTeam),
+        });
+  
+        setTimeout(() => {
+          setSubmission(false);
+          setSuccessfulSubmission(true);
+        }, 3000)
+  
+        setTimeout(() => {
+          setSuccessfulSubmission(false);
+        }, 7000)
+  
+      } catch (error) {
+        console.log(error);
+      }
     }
   }
 
@@ -235,7 +250,23 @@ export default function TeamForm() {
                 variant="outlined"
                 id="submission-alert"
               >
+                <AlertTitle>Submission Success</AlertTitle>
                 Submission Successfully Saved in The Database!
+              </Alert>
+            </Grid2>
+          </Fade>
+        ) : null}
+
+      {submissionErrors ? (
+          <Fade in={submissionErrors}>
+            <Grid2 item xs={4} md={12}>
+              <Alert
+                severity="warning"
+                variant="outlined"
+                id="submission-alert"
+              >
+                <AlertTitle>Submission Error</AlertTitle>
+                {submissionErrors}
               </Alert>
             </Grid2>
           </Fade>
