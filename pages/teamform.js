@@ -179,10 +179,10 @@ export default function TeamForm() {
         setTimeout(() => {
           setSuccessfulSubmission(false);
         }, 7000);
+        resetInputs();
       } catch (error) {
         setSubmissionErrors("Error during submission...");
       }
-
     }
   }
 
