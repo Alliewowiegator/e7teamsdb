@@ -69,9 +69,18 @@ const Navbar = () => {
               }}
             >
               {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center"><Link href={page == 'New Composition' ? "/teamform" : "/comps"} prefetch={true}>{page}</Link></Typography>
-                </MenuItem>
+                <Link
+                  key={page}
+                  href={page == "New Composition" ? "/teamform" : "/comps"}
+                  prefetch={true}
+                  passHref
+                >
+                  <MenuItem key={page} onClick={handleCloseNavMenu}>
+                    <Typography textAlign="center">
+                      {page}
+                    </Typography>
+                  </MenuItem>
+                </Link>
               ))}
             </Menu>
           </Box>
@@ -112,14 +121,19 @@ const Navbar = () => {
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages.map((page) => (
-
-              <Button
+              <Link
                 key={page}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: "white", display: "block" }}
+                href={page == "New Composition" ? "/teamform" : "/comps"}
+                prefetch={true}
+                passHref
               >
-                <Link href={page == 'New Composition' ? "/teamform" : "/comps"} prefetch={true}>{page}</Link>
-              </Button>
+                <Button
+                  onClick={handleCloseNavMenu}
+                  sx={{ my: 2, color: "white", display: "block" }}
+                >
+                  {page}
+                </Button>
+              </Link>
             ))}
           </Box>
         </Toolbar>
