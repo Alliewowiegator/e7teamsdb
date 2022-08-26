@@ -3,23 +3,9 @@ import Container from "@mui/material/Container";
 import Grid2 from "@mui/material/Unstable_Grid2";
 import { v4 as uuidv4 } from "uuid";
 import {
-  CardContent,
-  Card,
-  Button,
-  TextField,
-  MenuItem,
-  FormControl,
-  InputLabel,
-  Select,
-  Typography,
-  IconButton,
-  Fade,
-  Paper,
-  ButtonGroup,
-  CircularProgress,
-  Backdrop,
-  Alert,
-  AlertTitle,
+  CardContent, Card, Button, TextField, MenuItem,
+  FormControl, InputLabel, Select, Typography, IconButton, Fade,
+  Paper, ButtonGroup, CircularProgress, Backdrop, Alert, AlertTitle,
 } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
@@ -35,11 +21,10 @@ export default function TeamForm() {
   const [heroToEdit, setEditHero] = useState({});
   const [heroes, setHeroes] = useState([]);
   const [open, setOpen] = useState(false);
-  const [userInformation, setUserInformation] = useState([
-    {
+  const [userInformation, setUserInformation] = useState([{
       username: "",
       server: "",
-    },
+    }
   ]);
 
   const [teamInfo, setTeamInfo] = useState({
@@ -114,6 +99,36 @@ export default function TeamForm() {
     return heroObject;
   }
 
+  function resetInputs() {
+    setUserInformation([{
+      username: "",
+      server: "",
+    }])
+    setTeamInfo({
+      teamType: "",
+      teamDescription: "",
+    })
+    setHeroes([])
+    setInitialHero([
+      {
+        necklaceStat: "",
+        ringStat: "",
+        bootStat: "",
+        name: "",
+        power: "",
+        attack: "",
+        defense: "",
+        health: "",
+        speed: "",
+        criticalHitChance: "",
+        criticalHitDamage: "",
+        effectiveness: "",
+        effectResistance: "",
+        dualAttackChance: "",
+      },
+    ])
+  }
+
   async function handleSubmit(e) {
     e.preventDefault();
     setSubmissionErrors("");
@@ -135,16 +150,14 @@ export default function TeamForm() {
     if (!newTeam.userInfo.username || !newTeam.userInfo.server) {
       setSubmissionErrors("Missing username or server information...");
       setSubmission(false);
-    } else if (
-      !newTeam.teamInfo.teamType ||
-      !newTeam.teamInfo.teamDescription
-    ) {
+    } else if (!newTeam.teamInfo.teamType || !newTeam.teamInfo.teamDescription) {
       setSubmissionErrors("Missing team type or description...");
       setSubmission(false);
     } else if (!newTeam.heroes[0].name) {
       setSubmissionErrors("At least one hero needs to be selected...");
       setSubmission(false);
     } else {
+
       try {
         const res = await fetch(
           "https://e7teamsdb.herokuapp.com/api/allComps",
@@ -167,8 +180,9 @@ export default function TeamForm() {
           setSuccessfulSubmission(false);
         }, 7000);
       } catch (error) {
-        setSubmissionErrors('Error during submission...')
+        setSubmissionErrors("Error during submission...");
       }
+
     }
   }
 
@@ -192,7 +206,7 @@ export default function TeamForm() {
     return () => {
       console.log("Cleanup");
     };
-  }, [submissionErrors])
+  }, [submissionErrors]);
 
   useEffect(() => {
     const heroIndex = heroes.length - 1;
