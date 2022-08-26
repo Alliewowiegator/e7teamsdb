@@ -267,7 +267,7 @@ export default function TeamForm() {
                 id="submission-alert"
               >
                 <AlertTitle>Submission Success</AlertTitle>
-                Submission Successfully Saved in The Database!
+                Composition successfully saved to database...
               </Alert>
             </Grid2>
           </Fade>
