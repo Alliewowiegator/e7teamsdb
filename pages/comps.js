@@ -125,7 +125,7 @@ const Comps = ({ compData }) => {
 
 Comps.getInitialProps = async () => {
     let fetchUrl = '';
-    (process.env.NODE_ENV ) ? fetchUrl = 'http://localhost:3000/api/allComps' : fetchUrl = 'https://e7teamsdb.herokuapp.com/api/allComps'
+    (process.env.NODE_ENV === 'dev' ) ? fetchUrl = 'http://localhost:3000/api/allComps' : fetchUrl = 'https://e7teamsdb.herokuapp.com/api/allComps';
     const res = await fetch(fetchUrl);
     const { data } = await res.json();
 
