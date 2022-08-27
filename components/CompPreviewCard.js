@@ -8,7 +8,7 @@ import {
 import LinkIcon from '@mui/icons-material/Link';
 import { allHeroInfo } from '../data/heroData';
 
-export default function CompPreview(props) {
+export default function CompPreviewCard(props) {
 
     function getHeroPortrait(heroName) {
         let heroToReturn = allHeroInfo.find((hero) => hero.value === heroName);
@@ -35,12 +35,9 @@ export default function CompPreview(props) {
                     <Typography variant='body2' gutterBottom>
                         {props.teamInfo.teamDescription}
                     </Typography>
-
-
-
                 </CardContent>
                 <CardActions>
-                    <Button size="small">View Composition</Button>
+                    <Button size="small" onClick={() => props.openCompModal(props._id)}>View Composition</Button>
                     <IconButton
                         size='small'
                         aria-label="delete"

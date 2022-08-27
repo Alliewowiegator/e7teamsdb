@@ -14,11 +14,111 @@ import {
     Divider,
 } from "@mui/material";
 
-import CompPreview from "../components/CompPreview";
+import CompPreviewModal from "../components/CompPreviewModal";
+import CompPreviewCard from "../components/CompPreviewCard";
 
 const Comps = ({ compData }) => {
     const [filteredData, setFilteredData] = useState(compData);
     const [contentFilter, setContentFilter] = useState("");
+    const [compToView, setCompToView] = useState({
+        "_id": "",
+        "userInfo": {
+          "username": "",
+          "server": "",
+          "_id": ""
+        },
+        "teamInfo": {
+          "teamType": "",
+          "teamDescription": "",
+          "_id": ""
+        },
+        "heroes": [
+          {
+            "id": "",
+            "necklaceStat": "",
+            "ringStat": "",
+            "bootStat": "",
+            "name": "",
+            "power": null,
+            "attack": null,
+            "defense": null,
+            "health": null,
+            "speed": null,
+            "criticalHitChance": "",
+            "criticalHitDamage": "",
+            "effectiveness": "",
+            "effectResistance": "",
+            "dualAttackChance": "",
+            "_id": ""
+          },
+          {
+            "id": "",
+            "necklaceStat": "",
+            "ringStat": "",
+            "bootStat": "",
+            "name": "",
+            "power": null,
+            "attack": null,
+            "defense": null,
+            "health": null,
+            "speed": null,
+            "criticalHitChance": "",
+            "criticalHitDamage": "",
+            "effectiveness": "",
+            "effectResistance": "",
+            "dualAttackChance": "",
+            "_id": ""
+          },
+          {
+            "id": "",
+            "necklaceStat": "",
+            "ringStat": "",
+            "bootStat": "",
+            "name": "Ilynav",
+            "power": null,
+            "attack": null,
+            "defense": null,
+            "health": null,
+            "speed": null,
+            "criticalHitChance": "",
+            "criticalHitDamage": "",
+            "effectiveness": "",
+            "effectResistance": "",
+            "dualAttackChance": "",
+            "_id": ""
+          },
+          {
+            "id": "",
+            "necklaceStat": "",
+            "ringStat": "",
+            "bootStat": "",
+            "name": "",
+            "power": null,
+            "attack": null,
+            "defense": null,
+            "health": null,
+            "speed": null,
+            "criticalHitChance": "",
+            "criticalHitDamage": "",
+            "effectiveness": "",
+            "effectResistance": "",
+            "dualAttackChance": "",
+            "_id": ""
+          }
+        ],
+        "__v": 0
+      });
+    const [open, setOpen] = useState(false);
+
+    const handleClose = () => setOpen(false);
+    const handleOpen = () => setOpen(true);
+
+    function openCompModal(compId) {
+        let selectedComp = compData.find((hero) => hero._id === compId);
+        setCompToView({ ...selectedComp });
+        handleOpen(true);
+        console.log(compToView)
+      }
 
     const filteredContent = () => {
         if (filteredData.length <= 0) {
@@ -33,7 +133,7 @@ const Comps = ({ compData }) => {
             return (
                 filteredData.map((hero, index) => (
                     <Grid2 key={index} item md={4} xs={4}>
-                        <CompPreview {...hero}></CompPreview>
+                        <CompPreviewCard {...hero} openCompModal={openCompModal}></CompPreviewCard>
                     </Grid2>
                 ))
             )
@@ -51,6 +151,11 @@ const Comps = ({ compData }) => {
 
     return (
         <Container maxWidth="lg">
+            <CompPreviewModal 
+                open={open}
+                {...compToView}
+                handleClose={handleClose}
+            />
             <Grid2
                 container
                 spacing={3}

@@ -182,6 +182,7 @@ export default function TeamForm() {
         resetInputs();
       } catch (error) {
         setSubmissionErrors("Error during submission...");
+        setSubmission(false);
       }
     }
   }
