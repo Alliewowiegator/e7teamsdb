@@ -10,98 +10,15 @@ import {
   CardMedia,
 } from "@mui/material";
 import Link from "next/link";
-import CompPreview from "./compspreview";
+import Head from "next/head";
 
 export default function Home() {
-
-  let testData = {
-    "_id": "630955d5bdf7c3901f48c2dd",
-    "userInfo": {
-        "username": "Allie",
-        "server": "Global",
-        "_id": "630955d5bdf7c3901f48c2de"
-    },
-    "teamInfo": {
-        "teamType": "Banshee",
-        "teamDescription": "Simple Banshee one-shot team",
-        "_id": "630955d5bdf7c3901f48c2df"
-    },
-    "heroes": [
-        {
-            "id": "430a8583-5f93-4bca-8938-189dee07e425",
-            "ringStat": "",
-            "bootStat": "",
-            "name": "Shadow Rose",
-            "power": null,
-            "attack": null,
-            "defense": null,
-            "health": null,
-            "speed": null,
-            "criticalHitChance": null,
-            "criticalHitDamage": null,
-            "effectiveness": null,
-            "effectResistance": null,
-            "dualAttackChance": null,
-            "_id": "630955d5bdf7c3901f48c2e0"
-        },
-        {
-            "id": "7846218f-6fd0-4c53-bd6a-695d6132d61e",
-            "ringStat": "",
-            "bootStat": "",
-            "name": "Baiken",
-            "power": null,
-            "attack": null,
-            "defense": null,
-            "health": null,
-            "speed": null,
-            "criticalHitChance": null,
-            "criticalHitDamage": null,
-            "effectiveness": null,
-            "effectResistance": null,
-            "dualAttackChance": null,
-            "_id": "630955d5bdf7c3901f48c2e1"
-        },
-        {
-            "id": "0397a062-da9d-457a-b239-f0962b970699",
-            "ringStat": "",
-            "bootStat": "",
-            "name": "Charles",
-            "power": null,
-            "attack": null,
-            "defense": null,
-            "health": null,
-            "speed": null,
-            "criticalHitChance": null,
-            "criticalHitDamage": null,
-            "effectiveness": null,
-            "effectResistance": null,
-            "dualAttackChance": null,
-            "_id": "630955d5bdf7c3901f48c2e2"
-        },
-        {
-            "id": "c86b7375-4bc8-4173-949d-175ce839b94b",
-            "ringStat": "",
-            "bootStat": "",
-            "name": "Pavel",
-            "power": null,
-            "attack": null,
-            "defense": null,
-            "health": null,
-            "speed": null,
-            "criticalHitChance": null,
-            "criticalHitDamage": null,
-            "effectiveness": null,
-            "effectResistance": null,
-            "dualAttackChance": null,
-            "_id": "630955d5bdf7c3901f48c2e3"
-        }
-    ],
-    "__v": 0
-}
-
   return (
     <Container maxWidth="lg">
-      <CompPreview {...testData} />
+      <Head>
+        <title>E7 Teams DB</title>
+        <meta name='description' content='Database for team Compositions in Epic Seven' />
+      </Head>
       <Grid2
         container
         spacing={3}
@@ -139,8 +56,8 @@ export default function Home() {
             </CardContent>
           </Card>
         </Grid2>
-        <Grid2 item xs={4} md={5} mdOffset={1}>
-          <Card>
+        <Grid2 item xs={4} md={6}>
+          <Card sx={{ minHeight: '28rem'}}>
             <CardMedia
               component="img"
               height="275"
@@ -149,13 +66,56 @@ export default function Home() {
             />
             <CardContent>
               <Typography sx={{ fontSize: 14 }} color="secondary" gutterBottom>
-                What to Expect
+                Composition Previews
               </Typography>
               <Typography variant="body1">
                 When viewing all of the submitted compositions, you will be
                 given small previews of each one available. This includes the
                 type of content it is for, the heroes in it, description
                 provided by the submitter, and their username.
+              </Typography>
+            </CardContent>
+          </Card>
+        </Grid2>
+        <Grid2 item xs={4} md={6}>
+          <Card sx={{ minHeight: '28rem'}}>
+            <CardMedia
+              component="img"
+              height="275"
+              image="/static/images/example-comp-view.png"
+              alt="example composition"
+            />
+            <CardContent>
+              <Typography sx={{ fontSize: 14 }} color="secondary" gutterBottom>
+                Viewing a Composition
+              </Typography>
+              <Typography variant="body1">
+                When you click to view a desired composition, you will be shown a more in-depth view.
+                This will show you individual stats for each hero, their accessory main stats, and selected artifact.
+              </Typography>
+            </CardContent>
+          </Card>
+        </Grid2>
+        <Grid2 item xs={4} md={10} mdOffset={1}>
+          <Card>
+            <CardContent>
+              <Typography sx={{ fontSize: 14 }} color="secondary" gutterBottom>
+                Development Notes
+              </Typography>
+              <Typography variant="body1">
+                The website is actively being worked on. Everything is currently subject to change. I am actively working on improvements.
+              </Typography>
+            </CardContent>
+          </Card>
+        </Grid2>
+        <Grid2 item xs={4} md={10} mdOffset={1}>
+          <Card>
+            <CardContent>
+              <Typography sx={{ fontSize: 14 }} color="secondary" gutterBottom>
+                Disclaimer
+              </Typography>
+              <Typography variant="body1">
+                This website is NOT affiliated with Epic Seven or Smilegate by any means, this is a FANMADE website dedicated to the game.
               </Typography>
             </CardContent>
           </Card>
