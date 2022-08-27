@@ -9,99 +9,10 @@ import {
   Link as MUILink,
   CardMedia,
 } from "@mui/material";
-import Link from "next/link";
-import CompPreview from "./compspreview";
 
-export default function Home() {
-
-  let testData = {
-    "_id": "630955d5bdf7c3901f48c2dd",
-    "userInfo": {
-        "username": "Allie",
-        "server": "Global",
-        "_id": "630955d5bdf7c3901f48c2de"
-    },
-    "teamInfo": {
-        "teamType": "Banshee",
-        "teamDescription": "Simple Banshee one-shot team",
-        "_id": "630955d5bdf7c3901f48c2df"
-    },
-    "heroes": [
-        {
-            "id": "430a8583-5f93-4bca-8938-189dee07e425",
-            "ringStat": "",
-            "bootStat": "",
-            "name": "Shadow Rose",
-            "power": null,
-            "attack": null,
-            "defense": null,
-            "health": null,
-            "speed": null,
-            "criticalHitChance": null,
-            "criticalHitDamage": null,
-            "effectiveness": null,
-            "effectResistance": null,
-            "dualAttackChance": null,
-            "_id": "630955d5bdf7c3901f48c2e0"
-        },
-        {
-            "id": "7846218f-6fd0-4c53-bd6a-695d6132d61e",
-            "ringStat": "",
-            "bootStat": "",
-            "name": "Baiken",
-            "power": null,
-            "attack": null,
-            "defense": null,
-            "health": null,
-            "speed": null,
-            "criticalHitChance": null,
-            "criticalHitDamage": null,
-            "effectiveness": null,
-            "effectResistance": null,
-            "dualAttackChance": null,
-            "_id": "630955d5bdf7c3901f48c2e1"
-        },
-        {
-            "id": "0397a062-da9d-457a-b239-f0962b970699",
-            "ringStat": "",
-            "bootStat": "",
-            "name": "Charles",
-            "power": null,
-            "attack": null,
-            "defense": null,
-            "health": null,
-            "speed": null,
-            "criticalHitChance": null,
-            "criticalHitDamage": null,
-            "effectiveness": null,
-            "effectResistance": null,
-            "dualAttackChance": null,
-            "_id": "630955d5bdf7c3901f48c2e2"
-        },
-        {
-            "id": "c86b7375-4bc8-4173-949d-175ce839b94b",
-            "ringStat": "",
-            "bootStat": "",
-            "name": "Pavel",
-            "power": null,
-            "attack": null,
-            "defense": null,
-            "health": null,
-            "speed": null,
-            "criticalHitChance": null,
-            "criticalHitDamage": null,
-            "effectiveness": null,
-            "effectResistance": null,
-            "dualAttackChance": null,
-            "_id": "630955d5bdf7c3901f48c2e3"
-        }
-    ],
-    "__v": 0
-}
-
+export default function Home() { 
   return (
     <Container maxWidth="lg">
-      <CompPreview {...testData} />
       <Grid2
         container
         spacing={3}

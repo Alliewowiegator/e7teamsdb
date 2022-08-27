@@ -14,11 +14,24 @@ import {
     Divider,
 } from "@mui/material";
 
-import CompPreview from "../components/CompPreview";
+import CompPreviewModal from "../components/CompPreviewModal";
+import CompPreviewCard from "../components/CompPreviewCard";
 
 const Comps = ({ compData }) => {
     const [filteredData, setFilteredData] = useState(compData);
     const [contentFilter, setContentFilter] = useState("");
+    const [compToView, setCompToView] = useState({});
+    const [open, setOpen] = useState(false);
+
+    const handleClose = () => setOpen(false);
+    const handleOpen = () => setOpen(true);
+
+    function openCompModal(compId) {
+        let compToView = compData.find((hero) => hero._id === compId);
+        setCompToView({ ...compToView });
+        console.log(compToView)
+        handleOpen(true);
+      }
 
     const filteredContent = () => {
         if (filteredData.length <= 0) {
@@ -33,7 +46,7 @@ const Comps = ({ compData }) => {
             return (
                 filteredData.map((hero, index) => (
                     <Grid2 key={index} item md={4} xs={4}>
-                        <CompPreview {...hero}></CompPreview>
+                        <CompPreviewCard {...hero} openCompModal={openCompModal}></CompPreviewCard>
                     </Grid2>
                 ))
             )
@@ -51,6 +64,11 @@ const Comps = ({ compData }) => {
 
     return (
         <Container maxWidth="lg">
+            <CompPreviewModal 
+                {...compToView}
+                open={open}
+                handleClose={handleClose}
+            />
             <Grid2
                 container
                 spacing={3}

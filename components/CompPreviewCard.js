@@ -35,12 +35,9 @@ export default function CompPreviewCard(props) {
                     <Typography variant='body2' gutterBottom>
                         {props.teamInfo.teamDescription}
                     </Typography>
-
-
-
                 </CardContent>
                 <CardActions>
-                    <Button size="small">View Composition</Button>
+                    <Button size="small" onClick={() => props.openCompModal(props._id)}>View Composition</Button>
                     <IconButton
                         size='small'
                         aria-label="delete"
