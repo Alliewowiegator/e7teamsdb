@@ -20,17 +20,104 @@ import CompPreviewCard from "../components/CompPreviewCard";
 const Comps = ({ compData }) => {
     const [filteredData, setFilteredData] = useState(compData);
     const [contentFilter, setContentFilter] = useState("");
-    const [compToView, setCompToView] = useState({});
+    const [compToView, setCompToView] = useState({
+        "_id": "",
+        "userInfo": {
+          "username": "",
+          "server": "",
+          "_id": ""
+        },
+        "teamInfo": {
+          "teamType": "",
+          "teamDescription": "",
+          "_id": ""
+        },
+        "heroes": [
+          {
+            "id": "",
+            "necklaceStat": "",
+            "ringStat": "",
+            "bootStat": "",
+            "name": "",
+            "power": null,
+            "attack": null,
+            "defense": null,
+            "health": null,
+            "speed": null,
+            "criticalHitChance": "",
+            "criticalHitDamage": "",
+            "effectiveness": "",
+            "effectResistance": "",
+            "dualAttackChance": "",
+            "_id": ""
+          },
+          {
+            "id": "",
+            "necklaceStat": "",
+            "ringStat": "",
+            "bootStat": "",
+            "name": "",
+            "power": null,
+            "attack": null,
+            "defense": null,
+            "health": null,
+            "speed": null,
+            "criticalHitChance": "",
+            "criticalHitDamage": "",
+            "effectiveness": "",
+            "effectResistance": "",
+            "dualAttackChance": "",
+            "_id": ""
+          },
+          {
+            "id": "",
+            "necklaceStat": "",
+            "ringStat": "",
+            "bootStat": "",
+            "name": "Ilynav",
+            "power": null,
+            "attack": null,
+            "defense": null,
+            "health": null,
+            "speed": null,
+            "criticalHitChance": "",
+            "criticalHitDamage": "",
+            "effectiveness": "",
+            "effectResistance": "",
+            "dualAttackChance": "",
+            "_id": ""
+          },
+          {
+            "id": "",
+            "necklaceStat": "",
+            "ringStat": "",
+            "bootStat": "",
+            "name": "",
+            "power": null,
+            "attack": null,
+            "defense": null,
+            "health": null,
+            "speed": null,
+            "criticalHitChance": "",
+            "criticalHitDamage": "",
+            "effectiveness": "",
+            "effectResistance": "",
+            "dualAttackChance": "",
+            "_id": ""
+          }
+        ],
+        "__v": 0
+      });
     const [open, setOpen] = useState(false);
 
     const handleClose = () => setOpen(false);
     const handleOpen = () => setOpen(true);
 
     function openCompModal(compId) {
-        let compToView = compData.find((hero) => hero._id === compId);
-        setCompToView({ ...compToView });
-        console.log(compToView)
+        let selectedComp = compData.find((hero) => hero._id === compId);
+        setCompToView({ ...selectedComp });
         handleOpen(true);
+        console.log(compToView)
       }
 
     const filteredContent = () => {
@@ -65,8 +152,8 @@ const Comps = ({ compData }) => {
     return (
         <Container maxWidth="lg">
             <CompPreviewModal 
-                {...compToView}
                 open={open}
+                {...compToView}
                 handleClose={handleClose}
             />
             <Grid2

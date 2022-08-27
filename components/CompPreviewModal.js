@@ -24,8 +24,11 @@ import { allHeroInfo } from '../data/heroData';
 export default function CompPreviewModal(props) {
 
   function getHeroPortrait(heroName) {
-    let heroToReturn = allHeroInfo.find((hero) => hero.value === heroName);
-    return heroToReturn.thumbnail;
+  
+    if (heroName) {
+      let heroToReturn = allHeroInfo.find((hero) => hero.value === heroName);
+      return heroToReturn.thumbnail;
+    }
   }
 
   return (
