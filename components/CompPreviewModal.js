@@ -18,13 +18,14 @@ import {
   Select,
   MenuItem,
   TextField,
+  Paper
 } from "@mui/material";
 import { allHeroInfo } from '../data/heroData';
 
 export default function CompPreviewModal(props) {
 
   function getHeroPortrait(heroName) {
-  
+
     if (heroName) {
       let heroToReturn = allHeroInfo.find((hero) => hero.value === heroName);
       return heroToReturn.thumbnail;
@@ -54,14 +55,14 @@ export default function CompPreviewModal(props) {
           >
             <Grid2 container spacing={2} columns={{ xs: 4, sm: 8, md: 12 }}>
               <Grid2 item md={12} xs={4}>
-              <Stack direction="row" alignItems="center" justifyContent="center" spacing={2} divider={<Divider orientation="vertical" flexItem />}>
-                      <Typography sx={{ fontSize: 17 }} color="primary">
-                        {props.teamInfo.teamType}
-                      </Typography>
-                      <Typography sx={{ fontSize: 17 }} color="primary">
-                        {props.teamInfo.teamDescription}
-                      </Typography>
-                    </Stack>
+                <Stack direction="row" alignItems="center" justifyContent="center" spacing={2} divider={<Divider orientation="vertical" flexItem />}>
+                  <Typography sx={{ fontSize: 17 }} color="primary">
+                    {props.teamInfo.teamType}
+                  </Typography>
+                  <Typography sx={{ fontSize: 17 }} color="primary">
+                    {props.teamInfo.teamDescription}
+                  </Typography>
+                </Stack>
               </Grid2>
               {props.heroes.map((hero, index) => {
                 return (
@@ -186,6 +187,18 @@ export default function CompPreviewModal(props) {
                   </Grid2>
                 );
               })}
+              <Grid2 item md={12} xs={4}>
+                <Paper>
+                <Button
+                    size="small"
+                    color="success"
+                    fullWidth
+                    onClick={() => props.handleClose()}
+                  >
+                    Close Composition
+                  </Button>
+                </Paper>
+              </Grid2>
             </Grid2>
           </Card>
         </Fade>
