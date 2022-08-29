@@ -37,7 +37,7 @@ import CompHeroCard from "../components/CompHeroCard";
 export default function TeamForm() {
   // State variables
   const [submissionErrors, setSubmissionErrors] = useState("");
-  const [heroIndex, setHeroIndex] = useState(0)
+  const [heroIndex, setHeroIndex] = useState(0);
   const [successfulSubmission, setSuccessfulSubmission] = useState(false);
   const [submission, setSubmission] = useState(false);
   const [heroToEdit, setEditHero] = useState({});
@@ -255,22 +255,22 @@ export default function TeamForm() {
       ? (heroToEdit = heroes.find((hero) => hero.id === heroId))
       : (heroToEdit = initialHero[0]);
     setEditHero({ ...heroToEdit });
-    setHeroIndex(index)
+    setHeroIndex(index);
     handleOpen(true);
   }
 
   const handleInputChange = (e, heroId) => {
     const { name, value } = e.target;
-    console.log('Name: ', name, ' Value:', value)
-    console.log('Handle called')
+    console.log("Name: ", name, " Value:", value);
+    console.log("Handle called");
     if (heroId) {
-      console.log('In ID')
+      console.log("In ID");
       const heroIndex = heroes.findIndex((hero) => hero.id === heroId);
       let heroArray = heroes;
       heroArray[heroIndex][name] = value;
       setHeroes([...heroArray]);
     } else {
-      console.log('In here')
+      console.log("In here");
       let heroArray = initialHero;
       heroArray[0][name] = value;
       setInitialHero([...heroArray]);
@@ -536,13 +536,15 @@ export default function TeamForm() {
               {heroes.map((hero, index) => {
                 return (
                   <Grid2 item xs={4} md={3} key={index} id={hero.id}>
-                    <CompHeroCard
-                      heroInfo={hero}
-                      openEditModal={openEditModal}
-                      handleInputChange={handleInputChange}
-                      removeHero={removeHero}
-                      index={index}
-                    />
+                    <Fade in={true}>
+                      <CompHeroCard
+                        heroInfo={hero}
+                        openEditModal={openEditModal}
+                        handleInputChange={handleInputChange}
+                        removeHero={removeHero}
+                        index={index}
+                      />
+                    </Fade>
                   </Grid2>
                 );
               })}
