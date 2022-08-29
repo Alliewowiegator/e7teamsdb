@@ -416,6 +416,12 @@ export default function TeamForm() {
                           id="filled-basic"
                           label="Username"
                           fullWidth
+                          onChange={(e) =>
+                            setUserInformation({
+                              ...userInformation,
+                              username: e.target.value,
+                            })
+                          }
                           variant="standard"
                         />
                         <FormControl
