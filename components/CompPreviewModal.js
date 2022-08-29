@@ -28,7 +28,7 @@ export default function CompPreviewModal(props) {
 
     if (heroName) {
       let heroToReturn = allHeroInfo.find((hero) => hero.value === heroName);
-      return heroToReturn.thumbnail;
+      return heroToReturn.image;
     }
   }
 

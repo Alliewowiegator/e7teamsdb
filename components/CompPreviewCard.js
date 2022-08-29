@@ -12,7 +12,7 @@ export default function CompPreviewCard(props) {
 
     function getHeroPortrait(heroName) {
         let heroToReturn = allHeroInfo.find((hero) => hero.value === heroName);
-        return heroToReturn.thumbnail;
+        return heroToReturn.image;
     }
 
     return (
