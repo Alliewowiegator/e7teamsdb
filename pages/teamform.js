@@ -535,8 +535,8 @@ export default function TeamForm() {
               </Grid2>
               {heroes.map((hero, index) => {
                 return (
-                  <Grid2 item xs={4} md={3} key={index} id={hero.id}>
-                    <Fade in={true}>
+                  <Fade in={true} key={index}>
+                    <Grid2 item xs={4} md={3} key={index} id={hero.id}>
                       <CompHeroCard
                         heroInfo={hero}
                         openEditModal={openEditModal}
@@ -544,8 +544,8 @@ export default function TeamForm() {
                         removeHero={removeHero}
                         index={index}
                       />
-                    </Fade>
-                  </Grid2>
+                    </Grid2>
+                  </Fade>
                 );
               })}
               <Grid2 item xs={4} md={12}>
