@@ -67,7 +67,7 @@ export default function HeroEditModal(props) {
               left: "50%",
               transform: "translate(-50%, -50%)",
               overflow: "auto",
-              minWidth: "50%",
+              minWidth: "80%",
             }}
           >
             <CardHeader
