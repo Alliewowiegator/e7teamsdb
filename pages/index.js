@@ -21,15 +21,14 @@ export default function Home() {
       </Head>
       <Grid2
         container
-        spacing={3}
+        spacing={1}
         paddingTop="2rem"
         columns={{ xs: 4, sm: 8, md: 12 }}
-        alignItems="stretch"
       >
         <Grid2 item xs={4} md={6}>
           <Card>
             <CardContent>
-              <Typography sx={{ fontSize: 14 }} color="secondary" gutterBottom>
+              <Typography sx={{ fontSize: 14 }} color="#D46F94" gutterBottom>
                 What is E7 Teams DB?
               </Typography>
               <Typography variant="body1">
@@ -44,7 +43,7 @@ export default function Home() {
         <Grid2 item xs={4} md={6}>
           <Card>
             <CardContent>
-              <Typography sx={{ fontSize: 14 }} color="secondary" gutterBottom>
+              <Typography sx={{ fontSize: 14 }} color="#D46F94" gutterBottom>
                 What&apos;s the point?
               </Typography>
               <Typography variant="body1">
@@ -65,7 +64,7 @@ export default function Home() {
               alt="example composition"
             />
             <CardContent>
-              <Typography sx={{ fontSize: 14 }} color="secondary" gutterBottom>
+              <Typography sx={{ fontSize: 14 }} color="#D46F94" gutterBottom>
                 Composition Previews
               </Typography>
               <Typography variant="body1">
@@ -86,7 +85,7 @@ export default function Home() {
               alt="example composition"
             />
             <CardContent>
-              <Typography sx={{ fontSize: 14 }} color="secondary" gutterBottom>
+              <Typography sx={{ fontSize: 14 }} color="#D46F94" gutterBottom>
                 Viewing a Composition
               </Typography>
               <Typography variant="body1">
@@ -99,7 +98,7 @@ export default function Home() {
         <Grid2 item xs={4} md={10} mdOffset={1}>
           <Card>
             <CardContent>
-              <Typography sx={{ fontSize: 14 }} color="secondary" gutterBottom>
+              <Typography sx={{ fontSize: 14 }} color="#D46F94" gutterBottom>
                 Development Notes
               </Typography>
               <Typography variant="body1">
@@ -111,7 +110,7 @@ export default function Home() {
         <Grid2 item xs={4} md={10} mdOffset={1}>
           <Card>
             <CardContent>
-              <Typography sx={{ fontSize: 14 }} color="secondary" gutterBottom>
+              <Typography sx={{ fontSize: 14 }} color="#D46F94" gutterBottom>
                 Disclaimer
               </Typography>
               <Typography variant="body1">

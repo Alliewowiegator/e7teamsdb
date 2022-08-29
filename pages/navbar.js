@@ -29,8 +29,8 @@ const Navbar = () => {
   return (
     <AppBar position="static">
       <Container maxWidth="x1">
-        <Toolbar disableGutters>
-          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
+        <Toolbar disableGutters sx={{backgroundColor: '#2B2730'}}>
+          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" }, }}>
             <IconButton
               size="large"
               aria-label="account of current user"
@@ -86,7 +86,7 @@ const Navbar = () => {
               flexGrow: 1,
               fontFamily: "lato, sans-serif",
               fontWeight: 700,
-              letterSpacing: ".3rem",
+              letterSpacing: ".1rem",
               color: "inherit",
               textDecoration: "none",
             }}
@@ -103,7 +103,7 @@ const Navbar = () => {
               display: { xs: "none", md: "flex" },
               fontFamily: "lato, sans-serif",
               fontWeight: 700,
-              letterSpacing: ".3rem",
+              letterSpacing: ".1rem",
               color: "inherit",
               textDecoration: "none",
             }}

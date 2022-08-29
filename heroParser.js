@@ -9,7 +9,8 @@ for (const [key, value] of Object.entries(data)) {
     let currValue = value.name;
     let currViewValue = currValue;
     let currThumbnail = value.assets.thumbnail;
-    let parsedData = { value: currValue, viewValue: currViewValue, thumbnail: currThumbnail }
+    let currImage = value.assets.icon;
+    let parsedData = { value: currValue, viewValue: currViewValue, thumbnail: currThumbnail, image: currImage }
     heroData.push(parsedData)
 }
 
