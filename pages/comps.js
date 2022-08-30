@@ -166,7 +166,7 @@ const Comps = ({ compData }) => {
                 <Grid2 item xs={4} md={12}>
                     <Card>
                         <CardContent>
-                            <Typography sx={{ fontSize: 14 }} color="primary" gutterBottom>
+                            <Typography sx={{ fontSize: 14 }} color="#D46F94" gutterBottom>
                                 Team Compositions
                             </Typography>
                             <Typography variant="body1">
@@ -180,7 +180,7 @@ const Comps = ({ compData }) => {
                 <Grid2 item xs={4} md={12}>
                     <Card>
                         <CardContent>
-                            <Typography sx={{ fontSize: 14 }} color="primary" gutterBottom>
+                            <Typography sx={{ fontSize: 14 }} color="#D46F94" gutterBottom>
                                 Team Compositions
                             </Typography>
                             <Grid2
