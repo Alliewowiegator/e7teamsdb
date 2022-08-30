@@ -49,15 +49,15 @@ export default function CompPreviewModal(props) {
               minWidth: "50%",
               maxHeight: "100%",
               overflow: "auto",
-              padding: "1rem",
+              padding: '1rem'
             }}
           >
             <CardHeader
-              sx={{ color: "#D46F94"}}
+              sx={{ color: "#D46F94" }}
               title={props.teamInfo.teamType}
               subheader={props.teamInfo.teamDescription}
             />
-            <Grid2 container spacing={2} columns={{ xs: 4, sm: 8, md: 12 }}>
+            <Grid2 container spacing={1} columns={{ xs: 4, sm: 8, md: 12 }} sx={{ paddingLeft: '1rem', paddingRight: '1rem', paddingBottom: '1rem' }}>
               {props.heroes.map((hero, index) => {
                 return (
                   <Grid2 key={index} item md={6} xs={4}>
@@ -83,58 +83,64 @@ export default function CompPreviewModal(props) {
                             {hero.name}
                           </Typography>
                         </Stack>
-
-                        <Typography
-                          sx={{ fontSize: 18, textAlign: "center" }}
-                          color="secondary"
-                          gutterBottom
-                        >
-                          Accessory Main Stats
-                        </Typography>
                         <Stack
-                          direction="row"
+                          direction={{xs: 'column', md: 'row'}}
                           alignItems="center"
                           justifyContent="space-evenly"
                           spacing={2}
-                          paddingBottom="2rem"
                         >
                           <Typography
                             variant="body2"
                             color="#D46F94"
                             sx={{ textAlign: "center" }}
                           >
-                            Necklace
-                            <Divider />
-                            <Typography variant="body2" color="white">
-                              {hero.necklaceStat}
-                            </Typography>
+                            <Stack direction={{xs: 'row', md: 'column'}} spacing={1} alignItems="center">
+                              <Avatar
+                                src="../static/images/necklace-icon.png"
+                                sx={{ width: 24, height: 24 }}
+                                variant="square"
+                              />
+                              <Typography variant="body2" color="white">
+                                {hero.necklaceStat}
+                              </Typography>
+                            </Stack>
                           </Typography>
                           <Typography
                             variant="body2"
                             color="#D46F94"
                             sx={{ textAlign: "center" }}
                           >
-                            Ring
-                            <Divider />
+                            <Stack direction={{xs: 'row', md: 'column'}} spacing={1} alignItems="center">
+                              <Avatar
+                                src="../static/images/ring-icon.png"
+                                sx={{ width: 24, height: 24 }}
+                                variant="square"
+                              />
                             <Typography variant="body2" color="white">
                               {hero.ringStat}
                             </Typography>
+                            </Stack>
                           </Typography>
                           <Typography
                             variant="body2"
                             color="#D46F94"
                             sx={{ textAlign: "center" }}
                           >
-                            Boot
-                            <Divider />
+                            <Stack direction={{xs: 'row', md: 'column'}} spacing={1} alignItems="center">
+                              <Avatar
+                                src="../static/images/boot-icon.png"
+                                sx={{ width: 24, height: 24 }}
+                                variant="square"
+                              />
                             <Typography variant="body2" color="white">
                               {hero.bootStat}
                             </Typography>
+                            </Stack>
                           </Typography>
                         </Stack>
-                        <Divider />
+                        <Divider sx={{ margin: 2 }} />
                         <Typography
-                          sx={{ fontSize: 18, textAlign: "center" }}
+                          sx={{ fontSize: 13, textAlign: "center" }}
                           color="secondary"
                           gutterBottom
                         >

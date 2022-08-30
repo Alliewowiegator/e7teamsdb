@@ -302,8 +302,8 @@ export default function TeamForm() {
       />
       <Grid2
         container
-        spacing={2}
-        paddingTop="2rem"
+        spacing={1}
+        paddingTop="1.7rem"
         columns={{ xs: 4, sm: 8, md: 12 }}
         alignItems="stretch"
       >
@@ -338,8 +338,8 @@ export default function TeamForm() {
         ) : null}
 
         <Grid2 item xs={4} md={12}>
-          <Box sx={{ padding: ".5" }}>
-            <Grid2 container spacing={1} columns={{ xs: 4, sm: 8, md: 12 }}>
+          <Box>
+            <Grid2 container columns={{ xs: 4, sm: 8, md: 12 }}>
               <Grid2 item xs={4} md={6}>
                 <Card>
                   <CardContent>
