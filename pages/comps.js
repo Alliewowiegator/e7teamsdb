@@ -186,7 +186,7 @@ const Comps = ({ compData }) => {
           <Divider sx={{ margin: "1rem" }}>
             <Chip
               variant="outlined"
-              label="Submmited Composition Database"
+              label="Submited Composition Database"
               sx={{ color: "#D46F94" }}
             />
           </Divider>

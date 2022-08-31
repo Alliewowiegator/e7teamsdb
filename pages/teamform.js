@@ -141,8 +141,7 @@ export default function TeamForm() {
       setSubmissionErrors("Missing username or server information...");
       setSubmission(false);
     } else if (
-      !newTeam.teamInfo.teamType ||
-      !newTeam.teamInfo.teamDescription
+      !newTeam.teamInfo.teamType || !newTeam.teamInfo.teamDescription
     ) {
       setSubmissionErrors("Missing team type or description...");
       setSubmission(false);
@@ -150,31 +149,43 @@ export default function TeamForm() {
       setSubmissionErrors("At least one hero needs to be selected...");
       setSubmission(false);
     } else {
-      try {
-        const res = await fetch(
-          "https://e7teamsdb.herokuapp.com/api/allComps",
-          {
-            method: "POST",
-            headers: {
-              Accept: "application/json",
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(newTeam),
+
+      newTeam.heroes.forEach((hero, index) => {
+        for (const [key, value] of Object.entries(hero)) {
+          if (!value) { 
+            setSubmissionErrors(`Please re-check data for Hero #${index + 1} as they are missing data or stats...`);
+            setSubmission(false);
           }
-        );
-
-        setTimeout(() => {
+        }
+      })
+      
+      if (submission) {
+        try {
+          const res = await fetch(
+            "https://e7teamsdb.herokuapp.com/api/allComps",
+            {
+              method: "POST",
+              headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(newTeam),
+            }
+          );
+  
+          setTimeout(() => {
+            setSubmission(false);
+            setSuccessfulSubmission(true);
+          }, 3000);
+  
+          setTimeout(() => {
+            setSuccessfulSubmission(false);
+          }, 7000);
+          resetInputs();
+        } catch (error) {
+          setSubmissionErrors("Error during submission...");
           setSubmission(false);
-          setSuccessfulSubmission(true);
-        }, 3000);
-
-        setTimeout(() => {
-          setSuccessfulSubmission(false);
-        }, 7000);
-        resetInputs();
-      } catch (error) {
-        setSubmissionErrors("Error during submission...");
-        setSubmission(false);
+        }
       }
     }
   }
@@ -226,16 +237,13 @@ export default function TeamForm() {
 
   const handleInputChange = (e, heroId) => {
     const { name, value } = e.target;
-    console.log("Name: ", name, " Value:", value);
-    console.log("Handle called");
+
     if (heroId) {
-      console.log("In ID");
       const heroIndex = heroes.findIndex((hero) => hero.id === heroId);
       let heroArray = heroes;
       heroArray[heroIndex][name] = value;
       setHeroes([...heroArray]);
     } else {
-      console.log("In here");
       let heroArray = initialHero;
       heroArray[0][name] = value;
       setInitialHero([...heroArray]);
@@ -376,7 +384,7 @@ export default function TeamForm() {
                           <InputLabel id="user-server">Server</InputLabel>
                           <Select
                             labelId="user-server" id="userServer" label="Server" variant="standard"
-                            value={userInformation.server}
+                            defaultValue={userInformation.server}
                             onChange={(e) =>
                               setUserInformation({
                                 ...userInformation,

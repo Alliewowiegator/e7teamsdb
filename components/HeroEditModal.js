@@ -268,7 +268,7 @@ export default function HeroEditModal(props) {
                 <Grid2 item md={1} xs={3}>
                   <TextField
                     name="speed"
-                    defaultValue={ props.heroInfo.speed ? props.heroIfno.speed : "" }
+                    defaultValue={ props.heroInfo.speed ? props.heroInfo.speed : "" }
                     fullWidth
                     label="Speed"
                     variant="standard"
