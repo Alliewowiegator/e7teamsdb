@@ -70,7 +70,7 @@ export default function HeroEditModal(props) {
       >
         <Fade in={props.open}>
           <Card
-            sx={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)", overflow: "auto", minWidth: { xs: "80%", md: "50%" }, }}
+            sx={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)", overflow: "auto", minWidth: { xs: "80%", md: "50%" }, maxHeight: { xs: "75%" } }}
           >
             <CardHeader
               avatar={<Avatar src={getHeroPortrait()} />}
