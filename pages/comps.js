@@ -2,19 +2,8 @@
 import React, { useEffect, useState } from "react";
 import Container from "@mui/material/Container";
 import Grid2 from "@mui/material/Unstable_Grid2";
-import {
-  Card,
-  CardContent,
-  Typography,
-  InputLabel,
-  Select,
-  OutlinedInput,
-  MenuItem,
-  FormControl,
-  Divider,
-  Fade,
-  Alert,
-  AlertTitle,
+import { Card, CardContent, Typography, InputLabel, Select, Chip,
+  OutlinedInput, MenuItem, FormControl, Divider, Fade, Alert, AlertTitle,
 } from "@mui/material";
 
 import CompPreviewModal from "../components/CompPreviewModal";
@@ -147,7 +136,7 @@ const Comps = ({ compData }) => {
             <CompPreviewCard
               {...hero}
               openCompModal={openCompModal}
-            ></CompPreviewCard>
+            />
           </Grid2>
         </Fade>
       ));
@@ -194,11 +183,17 @@ const Comps = ({ compData }) => {
         </Grid2>
 
         <Grid2 item xs={4} md={12}>
+          <Divider sx={{ margin: "1rem" }}>
+            <Chip
+              variant="outlined"
+              label="Submmited Composition Database"
+              sx={{ color: "#D46F94" }}
+            />
+          </Divider>
+        </Grid2>
+        <Grid2 item xs={4} md={12}>
           <Card>
             <CardContent>
-              <Typography sx={{ fontSize: 14 }} color="#D46F94" gutterBottom>
-                Team Compositions
-              </Typography>
               <Grid2
                 container
                 spacing={1}
@@ -222,7 +217,7 @@ const Comps = ({ compData }) => {
                       }
                     >
                       <MenuItem value={""}>
-                        <em>None</em>
+                        <em>No Filter</em>
                       </MenuItem>
                       <MenuItem value={"Wyvern"}>Wyvern</MenuItem>
                       <MenuItem value={"Banshee"}>Banshee</MenuItem>

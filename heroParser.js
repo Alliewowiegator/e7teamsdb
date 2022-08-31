@@ -20,7 +20,7 @@ heroData.sort(function (current, next) {
   return (currentHero < nextHero) ? - 1 : (currentHero > nextHero) ? 1 : 0;
 })
 
-fsPromises.writeFile('./heroData.json', JSON.stringify(heroData, null, 1), (err) => {
+fsPromises.writeFile('./artifactData.json', JSON.stringify(heroData, null, 1), (err) => {
     if (err) throw err
     console.log('complete');
 })

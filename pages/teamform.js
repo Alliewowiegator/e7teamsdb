@@ -3,37 +3,18 @@ import Container from "@mui/material/Container";
 import Grid2 from "@mui/material/Unstable_Grid2";
 import { v4 as uuidv4 } from "uuid";
 import {
-  CardContent,
-  Card,
-  Button,
-  TextField,
-  MenuItem,
-  Box,
-  FormControl,
-  InputLabel,
-  Select,
-  Typography,
-  IconButton,
-  Fade,
-  Paper,
-  ButtonGroup,
-  CircularProgress,
-  Backdrop,
-  Alert,
-  AlertTitle,
-  Stack,
-  Divider,
-  Avatar,
-  CardMedia,
-  CardHeader,
-  Chip,
+  CardContent, Card, Button, TextField, MenuItem, Box, FormControl, InputLabel,
+  Select, Typography, IconButton, Fade, Paper, ButtonGroup, CircularProgress,
+  Backdrop, Alert, AlertTitle, Stack, Divider, Avatar, CardMedia, CardHeader, Chip,
 } from "@mui/material";
+
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 import { allHeroInfo } from "../data/heroData";
 import { useEffect, useState } from "react";
 import HeroEditModal from "../components/HeroEditModal";
 import CompHeroCard from "../components/CompHeroCard";
+import { newHero, newInitialHero } from "../utility/utilityFunctions";
 
 export default function TeamForm() {
   // State variables
@@ -44,7 +25,9 @@ export default function TeamForm() {
   const [heroToEdit, setEditHero] = useState({});
   const [heroes, setHeroes] = useState([]);
   const [open, setOpen] = useState(false);
+    const [initialHero, setInitialHero] = useState([newInitialHero()]);
   const [userInformation, setUserInformation] = useState([
+    
     {
       username: "",
       server: "",
@@ -56,24 +39,16 @@ export default function TeamForm() {
     teamDescription: "",
   });
 
-  const [initialHero, setInitialHero] = useState([
-    {
-      necklaceStat: "",
-      ringStat: "",
-      bootStat: "",
-      name: "",
-      power: "",
-      attack: "",
-      defense: "",
-      health: "",
-      speed: "",
-      criticalHitChance: "",
-      criticalHitDamage: "",
-      effectiveness: "",
-      effectResistance: "",
-      dualAttackChance: "",
-    },
-  ]);
+
+  const teamTypes = [
+    "Wyvern", "Banshee", "Golem", "Guild War Defense", "Guild War Offense", 
+    "Arena Defense", "RTA", "Abyss", "Adventure", "Other",
+  ];
+  const servers = ["Global", "Korea", "Other"];
+
+
+
+
 
   const handleClose = () => setOpen(false);
   const handleOpen = () => setOpen(true);
@@ -86,6 +61,8 @@ export default function TeamForm() {
           ringStat: initialHero[0].ringStat,
           bootStat: initialHero[0].bootStat,
           name: initialHero[0].name,
+          artifact: initialHero[0].artifact,
+          artifactLevel: initialHero[0].artifactLevel,
           power: initialHero[0].power,
           attack: initialHero[0].attack,
           defense: initialHero[0].defense,
@@ -107,6 +84,8 @@ export default function TeamForm() {
         ringStat: hero.ringStat,
         bootStat: hero.bootStat,
         name: hero.name,
+        artifact: hero.artifact,
+        artifactLevel: hero.artifactLevel,
         power: hero.power,
         attack: hero.attack,
         defense: hero.defense,
@@ -136,22 +115,7 @@ export default function TeamForm() {
     });
     setHeroes([]);
     setInitialHero([
-      {
-        necklaceStat: "",
-        ringStat: "",
-        bootStat: "",
-        name: "",
-        power: "",
-        attack: "",
-        defense: "",
-        health: "",
-        speed: "",
-        criticalHitChance: "",
-        criticalHitDamage: "",
-        effectiveness: "",
-        effectResistance: "",
-        dualAttackChance: "",
-      },
+      newInitialHero()
     ]);
   }
 
@@ -293,20 +257,10 @@ export default function TeamForm() {
       </Backdrop>
 
       <HeroEditModal
-        open={open}
-        heroData={heroes}
-        index={heroIndex}
-        heroInfo={heroToEdit}
-        initialHero={initialHero[0]}
-        handleClose={handleClose}
-        handleInputChange={handleInputChange}
+        open={open} heroData={heroes} heroInfo={heroToEdit} initialHero={initialHero[0]}
+        handleClose={handleClose} handleInputChange={handleInputChange} index={heroIndex}
       />
-      <Grid2
-        container
-        spacing={1}
-        paddingTop="1.7rem"
-        columns={{ xs: 4, sm: 8, md: 12 }}
-        alignItems="stretch"
+      <Grid2 container spacing={1} paddingTop="1.7rem" columns={{ xs: 4, sm: 8, md: 12 }} alignItems="stretch"
       >
         {successfulSubmission ? (
           <Fade in={successfulSubmission}>
@@ -381,16 +335,17 @@ export default function TeamForm() {
               </Grid2>
               <Grid2 item xs={4} md={12}>
                 <Divider sx={{ margin: "1rem" }}>
-                  <Chip label="Your User and Team Information" sx={{ color: "#D46F94"}} />
+                  <Chip
+                    variant="outlined"
+                    label="Your User and Team Information"
+                    sx={{ color: "#D46F94" }}
+                  />
                 </Divider>
               </Grid2>
-              <Grid2 item xs={4} md={8} mdOffset={2}>
+
+              <Grid2 item xs={4} md={12}>
                 <Card
-                  sx={{
-                    paddingLeft: "2rem",
-                    paddingRight: "2rem",
-                    paddingBottom: "1rem",
-                  }}
+                  sx={{ padding: '1rem '}}
                 >
                   <Grid2
                     container
@@ -398,13 +353,7 @@ export default function TeamForm() {
                     alignItems="stretch"
                   >
                     <Grid2 item xs={4} md={12} sx={{ paddingBottom: "1rem" }}>
-                      <Stack
-                        direction="row"
-                        alignItems="center"
-                        justifyContent="center"
-                        spacing={2}
-                        divider={<Divider orientation="vertical" flexItem />}
-                      >
+                      <Stack direction="row" alignItems="center" justifyContent="center" spacing={2} >
                         <TextField
                           id="filled-basic"
                           label="Username"
@@ -426,10 +375,7 @@ export default function TeamForm() {
                         >
                           <InputLabel id="user-server">Server</InputLabel>
                           <Select
-                            labelId="user-server"
-                            id="userServer"
-                            label="Server"
-                            variant="standard"
+                            labelId="user-server" id="userServer" label="Server" variant="standard"
                             value={userInformation.server}
                             onChange={(e) =>
                               setUserInformation({
@@ -438,20 +384,17 @@ export default function TeamForm() {
                               })
                             }
                           >
-                            <MenuItem value={"Global"}>Global</MenuItem>
-                            <MenuItem value={"Korea"}>KR</MenuItem>
-                            <MenuItem value={"Other"}>Other</MenuItem>
+                            {servers.map((server, index) => (
+                              <MenuItem key={index} value={server}>
+                                {server}
+                              </MenuItem>
+                            ))}
                           </Select>
                         </FormControl>
                       </Stack>
                     </Grid2>
                     <Grid2 item xs={4} md={12}>
-                      <Stack
-                        direction="row"
-                        alignItems="center"
-                        justifyContent="center"
-                        spacing={2}
-                        divider={<Divider orientation="vertical" flexItem />}
+                      <Stack direction="row" alignItems="center" justifyContent="center" spacing={2}
                       >
                         <TextField
                           fullWidth
@@ -485,25 +428,11 @@ export default function TeamForm() {
                               })
                             }
                           >
-                            <MenuItem value={"Wyvern"}>Wyvern</MenuItem>
-                            <MenuItem value={"Banshee"}>Banshee</MenuItem>
-                            <MenuItem value={"Golem"}>Golem</MenuItem>
-                            <MenuItem value={"Guild War Defense"}>
-                              Guild War Defense
-                            </MenuItem>
-                            <MenuItem value={"Guild War Offense"}>
-                              Guild War Offense
-                            </MenuItem>
-                            <MenuItem value={"Arena Defense"}>
-                              Arena Defense
-                            </MenuItem>
-                            <MenuItem value={"Arena Offense"}>
-                              Arena Offense
-                            </MenuItem>
-                            <MenuItem value={"RTA"}>RTA</MenuItem>
-                            <MenuItem value={"Abyss"}>Abyss</MenuItem>
-                            <MenuItem value={"Adventure"}>Adventure</MenuItem>
-                            <MenuItem value={"Other"}>Other</MenuItem>
+                            {teamTypes.map((teamType, index) => (
+                              <MenuItem key={index} value={teamType}>
+                                {teamType}
+                              </MenuItem>
+                            ))}
                           </Select>
                         </FormControl>
                       </Stack>
@@ -513,38 +442,42 @@ export default function TeamForm() {
               </Grid2>
               <Grid2 item xs={4} md={8} mdOffset={2}>
                 <Divider sx={{ margin: "1rem" }}>
-                  <Chip label="Your Composition Information" sx={{ color: "#D46F94"}} />
+                  <Chip
+                    variant="outlined"
+                    label="Your Composition Information"
+                    sx={{ color: "#D46F94" }}
+                  />
                 </Divider>
               </Grid2>
-              <Grid2
-                item
-                xs={4}
-                md={3}
-                mdOffset={
-                  heroes.length + 1 == 4 ? 0 : 4.5 / (heroes.length + 1)
-                }
-              >
-                <CompHeroCard
-                  heroInfo={initialHero[0]}
-                  openEditModal={openEditModal}
-                  handleInputChange={handleInputChange}
-                />
-              </Grid2>
-              {heroes.map((hero, index) => {
-                return (
-                  <Fade in={true} key={index}>
-                    <Grid2 item xs={4} md={3} key={index} id={hero.id}>
+              <Grid2 item xs={4} md={12}>
+                <Card sx={{ minWidth: '100%', minHeight: '100%', padding: '1rem' }}>
+                  <Grid2 container columns={{ xs: 4, sm: 8, md: 12 }}>
+                    <Grid2 item xs={4} md={3} mdOffset={heroes.length + 1 == 4 ? 0 : 4.5 / (heroes.length + 1)}>
                       <CompHeroCard
-                        heroInfo={hero}
+                        heroInfo={initialHero[0]}
                         openEditModal={openEditModal}
                         handleInputChange={handleInputChange}
-                        removeHero={removeHero}
-                        index={index}
                       />
                     </Grid2>
-                  </Fade>
-                );
-              })}
+
+                    {heroes.map((hero, index) => {
+                      return (
+                        <Fade in={true} key={index}>
+                          <Grid2 item xs={4} md={3} key={index} id={hero.id}>
+                            <CompHeroCard
+                              heroInfo={hero}
+                              openEditModal={openEditModal}
+                              handleInputChange={handleInputChange}
+                              removeHero={removeHero}
+                              index={index}
+                            />
+                          </Grid2>
+                        </Fade>
+                      );
+                    })}
+                  </Grid2>
+                </Card>
+              </Grid2>
               <Grid2 item xs={4} md={8} mdOffset={2}>
                 <Divider sx={{ margin: "1rem" }} />
               </Grid2>
@@ -559,23 +492,7 @@ export default function TeamForm() {
                     onClick={() => {
                       setHeroes((currentArray) => [
                         ...currentArray,
-                        {
-                          id: uuidv4(),
-                          necklaceStat: "",
-                          ringStat: "",
-                          bootStat: "",
-                          name: "",
-                          power: "",
-                          attack: "",
-                          defense: "",
-                          health: "",
-                          speed: "",
-                          criticalHitChance: "",
-                          criticalHitDamage: "",
-                          effectiveness: "",
-                          effectResistance: "",
-                          dualAttackChance: "",
-                        },
+                        newHero(),
                       ]);
                     }}
                     disabled={heroes.length >= 3}
@@ -583,12 +500,7 @@ export default function TeamForm() {
                   >
                     Add Hero
                   </Button>
-                  <Button
-                    size="small"
-                    color="success"
-                    fullWidth
-                    onClick={(e) => handleSubmit(e)}
-                  >
+                  <Button size="small" color="success" fullWidth onClick={(e) => handleSubmit(e)} >
                     Submit to Database
                   </Button>
                 </ButtonGroup>

@@ -33,7 +33,7 @@ export default function CompHeroCard(props) {
   }
 
   return (
-    <Card>
+    <Card sx={{ backgroundColor: '#1e1e1e' }}>
       <CardHeader 
         avatar={
           <Avatar src={getHeroPortrait(props.heroInfo.name)} />

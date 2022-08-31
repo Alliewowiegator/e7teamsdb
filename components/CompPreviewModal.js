@@ -153,6 +153,18 @@ export default function CompPreviewModal(props) {
                           spacing={2}
                           paddingBottom="2rem"
                         >
+                                                                              
+                        <Typography
+                          variant="body2"
+                          color="#D46F94"
+                          sx={{ textAlign: "center" }}
+                        >
+                            Artifact
+                            <Divider />
+                            <Typography variant="body2" color="white">
+                              {hero.artifact} - {hero.artifactLevel}
+                            </Typography>
+                          </Typography>
                           <Typography
                             variant="body2"
                             color="#D46F94"
