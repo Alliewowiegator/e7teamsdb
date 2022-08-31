@@ -149,7 +149,6 @@ export default function TeamForm() {
       setSubmissionErrors("At least one hero needs to be selected...");
       setSubmission(false);
     } else {
-
       newTeam.heroes.forEach((hero, index) => {
         for (const [key, value] of Object.entries(hero)) {
           if (!value) { 
@@ -158,34 +157,35 @@ export default function TeamForm() {
           }
         }
       })
-      
-      if (submission) {
-        try {
-          const res = await fetch(
-            "https://e7teamsdb.herokuapp.com/api/allComps",
-            {
-              method: "POST",
-              headers: {
-                Accept: "application/json",
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify(newTeam),
-            }
-          );
-  
-          setTimeout(() => {
-            setSubmission(false);
-            setSuccessfulSubmission(true);
-          }, 3000);
-  
-          setTimeout(() => {
-            setSuccessfulSubmission(false);
-          }, 7000);
-          resetInputs();
-        } catch (error) {
-          setSubmissionErrors("Error during submission...");
+    }
+
+    if (!submissionErrors) {
+      console.log('Submission attempted')
+      try {
+        const res = await fetch(
+          "https://e7teamsdb.herokuapp.com/api/allComps",
+          {
+            method: "POST",
+            headers: {
+              Accept: "application/json",
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(newTeam),
+          }
+        );
+
+        setTimeout(() => {
           setSubmission(false);
-        }
+          setSuccessfulSubmission(true);
+        }, 3000);
+
+        setTimeout(() => {
+          setSuccessfulSubmission(false);
+        }, 7000);
+        resetInputs();
+      } catch (error) {
+        setSubmissionErrors("Error during submission...");
+        setSubmission(false);
       }
     }
   }
