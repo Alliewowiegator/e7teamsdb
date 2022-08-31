@@ -11,7 +11,7 @@ import {
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 import { allHeroInfo } from "../data/heroData";
-import { useEffect, useState } from "react";
+import { useEffect, useState, use } from "react";
 import HeroEditModal from "../components/HeroEditModal";
 import CompHeroCard from "../components/CompHeroCard";
 import { newHero, newInitialHero } from "../utility/utilityFunctions";
@@ -25,14 +25,12 @@ export default function TeamForm() {
   const [heroToEdit, setEditHero] = useState({});
   const [heroes, setHeroes] = useState([]);
   const [open, setOpen] = useState(false);
-    const [initialHero, setInitialHero] = useState([newInitialHero()]);
-  const [userInformation, setUserInformation] = useState([
-    
-    {
-      username: "",
-      server: "",
-    },
-  ]);
+  const [initialHero, setInitialHero] = useState([newInitialHero()]);
+
+  const [userInformation, setUserInformation] = useState({
+    username: "",
+    server: "",
+  });
 
   const [teamInfo, setTeamInfo] = useState({
     teamType: "",
@@ -47,7 +45,35 @@ export default function TeamForm() {
   const servers = ["Global", "Korea", "Other"];
 
 
+  function checkForErrors(newTeam) {
+    let dataError = false;
 
+    if (!newTeam.userInfo.username || !newTeam.userInfo.server) {
+      setSubmissionErrors("Missing username or server information...");
+      setSubmission(false);
+      dataError = true;
+    } else if ( !newTeam.teamInfo.teamType || !newTeam.teamInfo.teamDescription) {
+      setSubmissionErrors("Missing team type or description...");
+      setSubmission(false);
+      dataError = true;
+    } else if (!newTeam.heroes[0].name) {
+      setSubmissionErrors("At least one hero needs to be selected...");
+      setSubmission(false);
+      dataError = true;
+    }
+
+    newTeam.heroes.forEach((hero, index) => {
+      for (const [key, value] of Object.entries(hero)) {
+        if (!value) { 
+          setSubmissionErrors(`Please re-check data for Hero #${index + 1} as they are missing data or stats...`);
+          setSubmission(false);
+          dataError = true;
+        }
+      }
+    })
+
+    return dataError;
+  }
 
 
   const handleClose = () => setOpen(false);
@@ -103,12 +129,10 @@ export default function TeamForm() {
   }
 
   function resetInputs() {
-    setUserInformation([
-      {
+    setUserInformation({
         username: "",
         server: "",
-      },
-    ]);
+    });
     setTeamInfo({
       teamType: "",
       teamDescription: "",
@@ -137,30 +161,10 @@ export default function TeamForm() {
       heroes: heroesObject.heroes,
     };
 
-    if (!newTeam.userInfo.username || !newTeam.userInfo.server) {
-      setSubmissionErrors("Missing username or server information...");
-      setSubmission(false);
-    } else if (
-      !newTeam.teamInfo.teamType || !newTeam.teamInfo.teamDescription
-    ) {
-      setSubmissionErrors("Missing team type or description...");
-      setSubmission(false);
-    } else if (!newTeam.heroes[0].name) {
-      setSubmissionErrors("At least one hero needs to be selected...");
-      setSubmission(false);
-    } else {
-      newTeam.heroes.forEach((hero, index) => {
-        for (const [key, value] of Object.entries(hero)) {
-          if (!value) { 
-            setSubmissionErrors(`Please re-check data for Hero #${index + 1} as they are missing data or stats...`);
-            setSubmission(false);
-          }
-        }
-      })
-    }
+    const errors = await checkForErrors(newTeam)
 
-    if (!submissionErrors) {
-      console.log('Submission attempted')
+
+    if (!errors) {
       try {
         const res = await fetch(
           "https://e7teamsdb.herokuapp.com/api/allComps",
@@ -173,12 +177,12 @@ export default function TeamForm() {
             body: JSON.stringify(newTeam),
           }
         );
-
+  
         setTimeout(() => {
           setSubmission(false);
           setSuccessfulSubmission(true);
         }, 3000);
-
+  
         setTimeout(() => {
           setSuccessfulSubmission(false);
         }, 7000);
@@ -187,7 +191,12 @@ export default function TeamForm() {
         setSubmissionErrors("Error during submission...");
         setSubmission(false);
       }
+    } else {
+      setSubmission(false);
     }
+
+    
+
   }
 
   useEffect(() => {
@@ -384,7 +393,7 @@ export default function TeamForm() {
                           <InputLabel id="user-server">Server</InputLabel>
                           <Select
                             labelId="user-server" id="userServer" label="Server" variant="standard"
-                            defaultValue={userInformation.server}
+                            value={userInformation.server}
                             onChange={(e) =>
                               setUserInformation({
                                 ...userInformation,
