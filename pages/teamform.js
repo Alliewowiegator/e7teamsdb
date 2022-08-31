@@ -25,7 +25,8 @@ import {
   Divider,
   Avatar,
   CardMedia,
-  Unstable_Grid2,
+  CardHeader,
+  Chip,
 } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
@@ -379,13 +380,15 @@ export default function TeamForm() {
                 </Card>
               </Grid2>
               <Grid2 item xs={4} md={12}>
-                <Divider sx={{ margin: "1rem" }} />
+                <Divider sx={{ margin: "1rem" }}>
+                  <Chip label="Your User and Team Information" sx={{ color: "#D46F94"}} />
+                </Divider>
               </Grid2>
               <Grid2 item xs={4} md={8} mdOffset={2}>
                 <Card
                   sx={{
-                    paddingLeft: "1rem",
-                    paddingRight: "1rem",
+                    paddingLeft: "2rem",
+                    paddingRight: "2rem",
                     paddingBottom: "1rem",
                   }}
                 >
@@ -395,16 +398,6 @@ export default function TeamForm() {
                     alignItems="stretch"
                   >
                     <Grid2 item xs={4} md={12} sx={{ paddingBottom: "1rem" }}>
-                      <Typography
-                        sx={{
-                          fontSize: 15,
-                          textAlign: "center",
-                          fontWeight: "bold",
-                        }}
-                        color="#D46F94"
-                      >
-                        Your In-Game Information
-                      </Typography>
                       <Stack
                         direction="row"
                         alignItems="center"
@@ -416,6 +409,8 @@ export default function TeamForm() {
                           id="filled-basic"
                           label="Username"
                           fullWidth
+                          inputProps={{ maxLength: 13 }}
+                          value={userInformation.username}
                           onChange={(e) =>
                             setUserInformation({
                               ...userInformation,
@@ -435,6 +430,7 @@ export default function TeamForm() {
                             id="userServer"
                             label="Server"
                             variant="standard"
+                            value={userInformation.server}
                             onChange={(e) =>
                               setUserInformation({
                                 ...userInformation,
@@ -450,17 +446,6 @@ export default function TeamForm() {
                       </Stack>
                     </Grid2>
                     <Grid2 item xs={4} md={12}>
-                      <Typography
-                        sx={{
-                          fontSize: 15,
-                          textAlign: "center",
-                          fontWeight: "bold",
-                        }}
-                        color="#D46F94"
-                      >
-                        Your Team Information
-                      </Typography>
-
                       <Stack
                         direction="row"
                         alignItems="center"
@@ -472,6 +457,8 @@ export default function TeamForm() {
                           fullWidth
                           label="Team Description"
                           variant="standard"
+                          inputProps={{ maxLength: 30 }}
+                          value={teamInfo.teamDescription}
                           onChange={(e) =>
                             setTeamInfo({
                               ...teamInfo,
@@ -490,6 +477,7 @@ export default function TeamForm() {
                             id="teamType"
                             label="Team Type"
                             variant="standard"
+                            value={teamInfo.teamType}
                             onChange={(e) =>
                               setTeamInfo({
                                 ...teamInfo,
@@ -523,10 +511,19 @@ export default function TeamForm() {
                   </Grid2>
                 </Card>
               </Grid2>
-              <Grid2 item xs={4} md={12}>
-                <Divider sx={{ margin: "1rem" }} />
+              <Grid2 item xs={4} md={8} mdOffset={2}>
+                <Divider sx={{ margin: "1rem" }}>
+                  <Chip label="Your Composition Information" sx={{ color: "#D46F94"}} />
+                </Divider>
               </Grid2>
-              <Grid2 item xs={4} md={3}>
+              <Grid2
+                item
+                xs={4}
+                md={3}
+                mdOffset={
+                  heroes.length + 1 == 4 ? 0 : 4.5 / (heroes.length + 1)
+                }
+              >
                 <CompHeroCard
                   heroInfo={initialHero[0]}
                   openEditModal={openEditModal}
@@ -548,7 +545,7 @@ export default function TeamForm() {
                   </Fade>
                 );
               })}
-              <Grid2 item xs={4} md={12}>
+              <Grid2 item xs={4} md={8} mdOffset={2}>
                 <Divider sx={{ margin: "1rem" }} />
               </Grid2>
               <Grid2 item xs={4} md={4} mdOffset={4}>
