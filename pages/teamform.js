@@ -62,16 +62,18 @@ export default function TeamForm() {
       dataError = true;
     }
 
-    newTeam.heroes.forEach((hero, index) => {
-      for (const [key, value] of Object.entries(hero)) {
-        if (!value) { 
-          setSubmissionErrors(`Please re-check data for Hero #${index + 1} as they are missing data or stats...`);
-          setSubmission(false);
-          dataError = true;
+    if (!dataError) {
+      newTeam.heroes.forEach((hero, index) => {
+        for (const [key, value] of Object.entries(hero)) {
+          if (!value) { 
+            setSubmissionErrors(`Please re-check data for Hero #${index + 1} as they are missing data or stats...`);
+            setSubmission(false);
+            dataError = true;
+          }
         }
-      }
-    })
-
+      })
+    }
+    
     return dataError;
   }
 
