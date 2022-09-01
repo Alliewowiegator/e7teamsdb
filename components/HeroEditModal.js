@@ -194,9 +194,6 @@ export default function HeroEditModal(props) {
                       <MenuItem value={"Effectiveness %"}>
                         Effectiveness %
                       </MenuItem>
-                      <MenuItem value={"Effect Resistance %"}>
-                        Critical Hit Chance
-                      </MenuItem>
                       <MenuItem value={"Attack %"}>Attack %</MenuItem>
                       <MenuItem value={"Attack"}>Attack</MenuItem>
                       <MenuItem value={"Health %"}>Health %</MenuItem>
