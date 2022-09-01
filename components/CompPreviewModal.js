@@ -2,24 +2,9 @@ import React from "react";
 import Grid2 from "@mui/material/Unstable_Grid2";
 import Container from "@mui/material/Container";
 import {
-  Card,
-  CardContent,
-  Typography,
-  CardActions,
-  Avatar,
-  Stack,
-  Button,
-  IconButton,
-  Divider,
-  Modal,
-  Fade,
-  FormControl,
-  InputLabel,
-  Select,
-  MenuItem,
-  TextField,
-  Paper,
-  CardHeader,
+  Card, CardContent, Typography, CardActions, Avatar, Stack, Button, 
+  IconButton, Divider, Modal, Fade, FormControl, InputLabel, Select, 
+  MenuItem, TextField, Paper, CardHeader,
 } from "@mui/material";
 import { allHeroInfo } from "../data/heroData";
 
@@ -64,11 +49,7 @@ export default function CompPreviewModal(props) {
                     <Card sx={{ backgroundColor: "#1e1e1e" }}>
                       <CardContent>
                         <Stack
-                          direction="row"
-                          alignItems="center"
-                          justifyContent="center"
-                          spacing={2}
-                          paddingBottom="1rem"
+                          direction="row" alignItems="center" justifyContent="center" spacing={2} paddingBottom="1rem"
                           divider={<Divider orientation="vertical" flexItem />}
                         >
                           <Avatar
@@ -84,21 +65,14 @@ export default function CompPreviewModal(props) {
                           </Typography>
                         </Stack>
                         <Stack
-                          direction={{xs: 'column', md: 'row'}}
-                          alignItems="center"
-                          justifyContent="space-evenly"
-                          spacing={2}
+                          direction={{xs: 'column', md: 'row'}} alignItems="center" justifyContent="space-evenly" spacing={2}
                         >
                           <Typography
-                            variant="body2"
-                            color="#D46F94"
-                            sx={{ textAlign: "center" }}
+                            variant="body2" color="#D46F94" sx={{ textAlign: "center" }}
                           >
                             <Stack direction={{xs: 'row', md: 'column'}} spacing={1} alignItems="center">
                               <Avatar
-                                src="../static/images/necklace-icon.png"
-                                sx={{ width: 24, height: 24 }}
-                                variant="square"
+                                src="../static/images/necklace-icon.png" sx={{ width: 24, height: 24 }} variant="square"
                               />
                               <Typography variant="body2" color="white">
                                 {hero.necklaceStat}
@@ -106,15 +80,11 @@ export default function CompPreviewModal(props) {
                             </Stack>
                           </Typography>
                           <Typography
-                            variant="body2"
-                            color="#D46F94"
-                            sx={{ textAlign: "center" }}
+                            variant="body2" color="#D46F94" sx={{ textAlign: "center" }}
                           >
                             <Stack direction={{xs: 'row', md: 'column'}} spacing={1} alignItems="center">
                               <Avatar
-                                src="../static/images/ring-icon.png"
-                                sx={{ width: 24, height: 24 }}
-                                variant="square"
+                                src="../static/images/ring-icon.png" sx={{ width: 24, height: 24 }} variant="square"
                               />
                             <Typography variant="body2" color="white">
                               {hero.ringStat}
@@ -122,15 +92,11 @@ export default function CompPreviewModal(props) {
                             </Stack>
                           </Typography>
                           <Typography
-                            variant="body2"
-                            color="#D46F94"
-                            sx={{ textAlign: "center" }}
+                            variant="body2" color="#D46F94" sx={{ textAlign: "center" }}
                           >
                             <Stack direction={{xs: 'row', md: 'column'}} spacing={1} alignItems="center">
                               <Avatar
-                                src="../static/images/boot-icon.png"
-                                sx={{ width: 24, height: 24 }}
-                                variant="square"
+                                src="../static/images/boot-icon.png" sx={{ width: 24, height: 24 }} variant="square"
                               />
                             <Typography variant="body2" color="white">
                               {hero.bootStat}
@@ -140,24 +106,16 @@ export default function CompPreviewModal(props) {
                         </Stack>
                         <Divider sx={{ margin: 2 }} />
                         <Typography
-                          sx={{ fontSize: 13, textAlign: "center" }}
-                          color="secondary"
-                          gutterBottom
+                          sx={{ fontSize: 13, textAlign: "center" }} color="secondary" gutterBottom
                         >
                           Hero Stats
                         </Typography>
                         <Stack
-                          direction="row"
-                          alignItems="center"
-                          justifyContent="space-evenly"
-                          spacing={2}
-                          paddingBottom="2rem"
+                          direction="row" alignItems="center" justifyContent="space-evenly" spacing={2} paddingBottom="2rem"
                         >
                                                                               
                         <Typography
-                          variant="body2"
-                          color="#D46F94"
-                          sx={{ textAlign: "center" }}
+                          variant="body2" color="#D46F94" sx={{ textAlign: "center" }}
                         >
                             Artifact
                             <Divider />
@@ -166,9 +124,7 @@ export default function CompPreviewModal(props) {
                             </Typography>
                           </Typography>
                           <Typography
-                            variant="body2"
-                            color="#D46F94"
-                            sx={{ textAlign: "center" }}
+                            variant="body2" color="#D46F94" sx={{ textAlign: "center" }}
                           >
                             Power
                             <Divider />
@@ -177,9 +133,7 @@ export default function CompPreviewModal(props) {
                             </Typography>
                           </Typography>
                           <Typography
-                            variant="body2"
-                            color="#D46F94"
-                            sx={{ textAlign: "center" }}
+                            variant="body2" color="#D46F94" sx={{ textAlign: "center" }}
                           >
                             Attack
                             <Divider />
@@ -188,9 +142,7 @@ export default function CompPreviewModal(props) {
                             </Typography>
                           </Typography>
                           <Typography
-                            variant="body2"
-                            color="#D46F94"
-                            sx={{ textAlign: "center" }}
+                            variant="body2" color="#D46F94" sx={{ textAlign: "center" }}
                           >
                             Defense
                             <Divider />
@@ -199,9 +151,7 @@ export default function CompPreviewModal(props) {
                             </Typography>
                           </Typography>
                           <Typography
-                            variant="body2"
-                            color="#D46F94"
-                            sx={{ textAlign: "center" }}
+                            variant="body2" color="#D46F94" sx={{ textAlign: "center" }}
                           >
                             Health
                             <Divider />
@@ -210,9 +160,7 @@ export default function CompPreviewModal(props) {
                             </Typography>
                           </Typography>
                           <Typography
-                            variant="body2"
-                            color="#D46F94"
-                            sx={{ textAlign: "center" }}
+                            variant="body2" color="#D46F94" sx={{ textAlign: "center" }}
                           >
                             Speed
                             <Divider />
@@ -222,16 +170,10 @@ export default function CompPreviewModal(props) {
                           </Typography>
                         </Stack>
                         <Stack
-                          direction="row"
-                          alignItems="center"
-                          justifyContent="space-evenly"
-                          spacing={2}
-                          paddingBottom=".5rem"
+                          direction="row" alignItems="center" justifyContent="space-evenly" spacing={2} paddingBottom=".5rem"
                         >
                           <Typography
-                            variant="body2"
-                            color="#D46F94"
-                            sx={{ textAlign: "center" }}
+                            variant="body2" color="#D46F94" sx={{ textAlign: "center" }}
                           >
                             Critical Hit Chance
                             <Divider />
@@ -240,9 +182,7 @@ export default function CompPreviewModal(props) {
                             </Typography>
                           </Typography>
                           <Typography
-                            variant="body2"
-                            color="#D46F94"
-                            sx={{ textAlign: "center" }}
+                            variant="body2" color="#D46F94" sx={{ textAlign: "center" }}
                           >
                             Critical Hit Damage
                             <Divider />
@@ -252,16 +192,10 @@ export default function CompPreviewModal(props) {
                           </Typography>
                         </Stack>
                         <Stack
-                          direction="row"
-                          alignItems="center"
-                          justifyContent="space-evenly"
-                          spacing={2}
-                          paddingBottom=".5rem"
+                          direction="row" alignItems="center" justifyContent="space-evenly" spacing={2} paddingBottom=".5rem"
                         >
                           <Typography
-                            variant="body2"
-                            color="#D46F94"
-                            sx={{ textAlign: "center" }}
+                            variant="body2" color="#D46F94" sx={{ textAlign: "center" }}
                           >
                             Effectiveness
                             <Divider />
@@ -270,9 +204,7 @@ export default function CompPreviewModal(props) {
                             </Typography>
                           </Typography>
                           <Typography
-                            variant="body2"
-                            color="#D46F94"
-                            sx={{ textAlign: "center" }}
+                            variant="body2" color="#D46F94" sx={{ textAlign: "center" }}
                           >
                             Effect Resistance
                             <Divider />
@@ -281,9 +213,7 @@ export default function CompPreviewModal(props) {
                             </Typography>
                           </Typography>
                           <Typography
-                            variant="body2"
-                            color="#D46F94"
-                            sx={{ textAlign: "center" }}
+                            variant="body2" color="#D46F94" sx={{ textAlign: "center" }}
                           >
                             Dual Attack Chance
                             <Divider />
@@ -300,10 +230,7 @@ export default function CompPreviewModal(props) {
               <Grid2 item md={12} xs={4}>
                 <Paper>
                   <Button
-                    size="small"
-                    color="success"
-                    fullWidth
-                    onClick={() => props.handleClose()}
+                    size="small" color="success" fullWidth onClick={() => props.handleClose()}
                   >
                     Close Composition
                   </Button>
