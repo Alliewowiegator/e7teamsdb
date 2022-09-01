@@ -73,7 +73,7 @@ export default function TeamForm() {
         }
       })
     }
-    
+
     return dataError;
   }
 
@@ -206,11 +206,10 @@ export default function TeamForm() {
     if (alert) {
       alert.scrollIntoView({ block: "center", behavior: "smooth" });
     }
-
+ 
     return () => {
-      console.log("Cleanup");
     };
-  });
+  }, [successfulSubmission] );
 
   useEffect(() => {
     const alertFailure = document.getElementById("submission-error");
@@ -219,7 +218,7 @@ export default function TeamForm() {
     }
 
     return () => {
-      console.log("Cleanup");
+      
     };
   }, [submissionErrors]);
 
@@ -232,7 +231,6 @@ export default function TeamForm() {
     }
 
     return () => {
-      console.log("Cleanup");
     };
   }, [heroes]);
 

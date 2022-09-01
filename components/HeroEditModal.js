@@ -126,21 +126,20 @@ export default function HeroEditModal(props) {
                 <Typography id="artifact-level" gutterBottom>
                   Artifact Level - { getArtifactLevel() ? getArtifactLevel() : '0' }
                 </Typography>
-                  <FormControl sx={{minWidth: '98%'}} variant="standard">
                     <Slider
-                      sx={{ color: "#D46F94" }}
+                      sx={{ color: "#D46F94", minWidth: '98%' }}
                       max={30}
                       step={1}
+                      variant="standard"
                       id="artifact-level"
                       marks={Array.from({ length: 31 }, (x, i) => {
                         return ((i % 5 === 0) ? { value: (i), label: `${i}` } : '')
                       })}
                       name="artifactLevel"
-                      value={getArtifactLevel()}
+                      defaultValue={props.heroInfo.artifactLevel}
                       onChange={(e) => props.handleInputChange(e, props.heroInfo.id) }
                       aria-labelledby="artifact-level"
                     />
-                  </FormControl>
                 </Grid2>
                 <Grid2 item md={1} mdOffset={0.5} xs={6}>
                   <FormControl
