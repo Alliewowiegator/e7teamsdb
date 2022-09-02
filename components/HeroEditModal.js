@@ -69,11 +69,7 @@ export default function HeroEditModal(props) {
 
   return (
     <Container maxWidth="lg">
-      <Modal
-        open={props.open}
-        onClose={props.handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
+      <Modal open={props.open} onClose={props.handleClose}
       >
         <Fade in={props.open}>
           <Card
@@ -97,7 +93,7 @@ export default function HeroEditModal(props) {
             />
             <CardContent>
               <Grid2 container spacing={2} columns={{ xs: 6, sm: 8, md: 12 }}>
-                <Grid2 item md={3} xs={4} mdOffset={3}>
+                <Grid2 item md={3} xs={6} mdOffset={3}>
                   <FormControl fullWidth variant="standard">
                     <InputLabel id="hero-name">Hero</InputLabel>
                     <Select
