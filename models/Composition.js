@@ -36,7 +36,10 @@ const CompositionSchema = new mongoose.Schema({
         imprintLevel: { type: String },
         imprintType: { type: String },
         awakeningLevel: { type: String },
-        heroLevel: { type: String }
+        heroLevel: { type: String },
+        setEffect1: { type: String },
+        setEffect2: { type: String },
+        setEffect3: { type: String }
       },
     ],
   },
