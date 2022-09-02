@@ -61,7 +61,7 @@ export default function CompPreviewModal(props) {
                             color="#D46F94"
                             gutterBottom
                           >
-                            {hero.name} - {hero.level}
+                            {hero.name}
                           </Typography>
                         </Stack>
                         <Stack
@@ -292,14 +292,12 @@ export default function CompPreviewModal(props) {
                   </Grid2>
                 );
               })}
-              <Grid2 item md={12} xs={4}>
-                <Paper>
+              <Grid2 item md={6} mdOffset={3} xs={4}>
                   <Button
-                    size="small" color="success" fullWidth onClick={() => props.handleClose()}
+                    size="small" variant="outlined" color="secondary" fullWidth onClick={() => props.handleClose()}
                   >
                     Close Composition
                   </Button>
-                </Paper>
               </Grid2>
             </Grid2>
           </Card>
