@@ -107,7 +107,8 @@ export default function TeamForm() {
           setEffect2: initialHero[0].setEffect2,
           setEffect3: initialHero[0].setEffect3,
           imprintLevel: initialHero[0].imprintLevel,
-          imprintType: initialHero[0].imprintType
+          imprintType: initialHero[0].imprintType,
+          awakeningLevel: initialHero[0].awakeningLevel
         },
       ],
     };
@@ -137,7 +138,8 @@ export default function TeamForm() {
         setEffect2: hero.setEffect2,
         setEffect3: hero.setEffect3,
         imprintLevel: hero.imprintLevel,
-        imprintType: hero.imprintType
+        imprintType: hero.imprintType,
+        awakeningLevel: hero.awakeningLevel
       });
     }
 
