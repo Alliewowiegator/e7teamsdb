@@ -83,7 +83,7 @@ export default function HeroEditModal(props) {
               left: "50%",
               transform: "translate(-50%, -50%)",
               overflow: { xs: "auto", md: "hidden" },
-              minWidth: { xs: "80%", md: "50%" },
+              minWidth: { xs: "83%", md: "50%" },
               maxHeight: { xs: "75%" },
               minHeight: { md: "55%" },
             }}
