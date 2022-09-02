@@ -40,9 +40,11 @@ export default function TeamForm() {
 
   const teamTypes = [
     "Wyvern", "Banshee", "Golem", "Guild War Defense", "Guild War Offense", 
-    "Arena Defense", "RTA", "Abyss", "Adventure", "Other",
+    "Arena Defense", "RTA", "Abyss", "Adventure", "Brutal Pherus",
+    "Blooming Snag Lich", "Pain Pursuer Moroi", "Hopeless Symaqus", "Destructive Gigantes", "Other",
   ];
   const servers = ["Global", "Korea", "Other"];
+
 
 
   function checkForErrors(newTeam) {
@@ -89,8 +91,6 @@ export default function TeamForm() {
           ringStat: initialHero[0].ringStat,
           bootStat: initialHero[0].bootStat,
           name: initialHero[0].name,
-          artifact: initialHero[0].artifact,
-          artifactLevel: initialHero[0].artifactLevel,
           power: initialHero[0].power,
           attack: initialHero[0].attack,
           defense: initialHero[0].defense,
@@ -101,6 +101,13 @@ export default function TeamForm() {
           effectiveness: initialHero[0].effectiveness,
           effectResistance: initialHero[0].effectResistance,
           dualAttackChance: initialHero[0].dualAttackChance,
+          artifact: initialHero[0].artifact,
+          artifactLevel: initialHero[0].artifactLevel,
+          setEffect1: initialHero[0].setEffect1,
+          setEffect2: initialHero[0].setEffect2,
+          setEffect3: initialHero[0].setEffect3,
+          imprintLevel: initialHero[0].imprintLevel,
+          imprintType: initialHero[0].imprintType
         },
       ],
     };
@@ -124,6 +131,13 @@ export default function TeamForm() {
         effectiveness: hero.effectiveness,
         effectResistance: hero.effectResistance,
         dualAttackChance: hero.dualAttackChance,
+        artifact: hero.artifact,
+        artifactLevel: hero.artifactLevel,
+        setEffect1: hero.setEffect1,
+        setEffect2: hero.setEffect2,
+        setEffect3: hero.setEffect3,
+        imprintLevel: hero.imprintLevel,
+        imprintType: hero.imprintType
       });
     }
 
@@ -469,7 +483,7 @@ export default function TeamForm() {
               <Grid2 item xs={4} md={12}>
                 <Card sx={{ minWidth: '100%', minHeight: '100%', padding: '1rem' }}>
                   <Grid2 container columns={{ xs: 4, sm: 8, md: 12 }}>
-                    <Grid2 item xs={4} md={3} mdOffset={heroes.length + 1 == 4 ? 0 : 4.5 / (heroes.length + 1)}>
+                    <Grid2 item xs={4} md={3} mdOffset={heroes.length + 1 == 4 ? 0 : (heroes.length === 0 ? 4.5 : 4.5 / (1.5 * heroes.length))}>
                       <CompHeroCard
                         heroInfo={initialHero[0]}
                         openEditModal={openEditModal}

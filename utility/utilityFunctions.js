@@ -8,8 +8,6 @@ const newHero = () => {
     ringStat : "",
     bootStat : "",
     name : "",
-    artifact : "",
-    artifactLevel : "",
     power : "",
     attack : "",
     defense : "",
@@ -19,7 +17,16 @@ const newHero = () => {
     criticalHitDamage : "",
     effectiveness : "",
     effectResistance : "",
-    dualAttackChance : ""
+    dualAttackChance : "",
+    artifact : "",
+    artifactLevel : "",
+    setEffect1: "",
+    setEffect2: "",
+    setEffect3: "",
+    imprintLevel: "",
+    imprintType: "",
+    heroLevel: "",
+    awakeningLevel: ""
   }
 }
 
@@ -29,8 +36,6 @@ const newInitialHero = () => {
     ringStat : "",
     bootStat : "",
     name : "",
-    artifact : "",
-    artifactLevel : "",
     power : "",
     attack : "",
     defense : "",
@@ -40,7 +45,16 @@ const newInitialHero = () => {
     criticalHitDamage : "",
     effectiveness : "",
     effectResistance : "",
-    dualAttackChance : ""
+    dualAttackChance : "",
+    artifact : "",
+    artifactLevel : "",
+    setEffect1: "",
+    setEffect2: "",
+    setEffect3: "",
+    imprintLevel: "",
+    imprintType: "",
+    heroLevel: "",
+    awakeningLevel: ""
   }
 }
 

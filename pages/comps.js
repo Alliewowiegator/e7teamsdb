@@ -112,6 +112,12 @@ const Comps = ({ compData }) => {
     console.log(compToView);
   }
 
+  const teamTypes = [
+    "Wyvern", "Banshee", "Golem", "Guild War Defense", "Guild War Offense", 
+    "Arena Defense", "RTA", "Abyss", "Adventure", "Brutal Pherus",
+    "Blooming Snag Lich", "Pain Pursuer Moroi", "Hopeless Symaqus", "Destructive Gigantes", "Other"
+  ];
+
   const filteredContent = () => {
     if (filteredData.length <= 0) {
       return (
@@ -219,21 +225,11 @@ const Comps = ({ compData }) => {
                       <MenuItem value={""}>
                         <em>No Filter</em>
                       </MenuItem>
-                      <MenuItem value={"Wyvern"}>Wyvern</MenuItem>
-                      <MenuItem value={"Banshee"}>Banshee</MenuItem>
-                      <MenuItem value={"Golem"}>Golem</MenuItem>
-                      <MenuItem value={"Guild War Defense"}>
-                        Guild War Defense
-                      </MenuItem>
-                      <MenuItem value={"Guild War Offense"}>
-                        Guild War Offense
-                      </MenuItem>
-                      <MenuItem value={"Arena Defense"}>Arena Defense</MenuItem>
-                      <MenuItem value={"Arena Offense"}>Arena Offense</MenuItem>
-                      <MenuItem value={"RTA"}>RTA</MenuItem>
-                      <MenuItem value={"Abyss"}>Abyss</MenuItem>
-                      <MenuItem value={"Adventure"}>Adventure</MenuItem>
-                      <MenuItem value={"Other"}>Other</MenuItem>
+                      {teamTypes.map((teamType, index) => (
+                              <MenuItem key={index} value={teamType}>
+                                {teamType}
+                              </MenuItem>
+                      ))}
                     </Select>
                   </FormControl>
                 </Grid2>

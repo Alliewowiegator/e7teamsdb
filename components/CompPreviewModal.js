@@ -61,7 +61,7 @@ export default function CompPreviewModal(props) {
                             color="#D46F94"
                             gutterBottom
                           >
-                            {hero.name}
+                            {hero.name} - {hero.level}
                           </Typography>
                         </Stack>
                         <Stack
@@ -104,6 +104,81 @@ export default function CompPreviewModal(props) {
                             </Stack>
                           </Typography>
                         </Stack>
+                        <Stack
+                          direction="row" alignItems="center" justifyContent="space-evenly" spacing={2} paddingBottom=".5rem"
+                        >
+                          <Typography
+                            variant="body2" color="#D46F94" sx={{ textAlign: "center" }}
+                          >
+                            Artifact ({hero.artifactLevel})
+                            <Divider />
+                            <Typography variant="body2" color="white">
+                              {hero.artifact}
+                            </Typography>
+                          </Typography>
+                          <Typography
+                            variant="body2" color="#D46F94" sx={{ textAlign: "center" }}
+                          >
+                            Awakening Level
+                            <Divider />
+                            <Typography variant="body2" color="white">
+                              +{hero.awakeningLevel}
+                            </Typography>
+                          </Typography>
+                        </Stack>
+                        <Stack
+                          direction="row" alignItems="center" justifyContent="space-evenly" spacing={2} paddingBottom=".5rem"
+                        >
+                          <Typography
+                            variant="body2" color="#D46F94" sx={{ textAlign: "center" }}
+                          >
+                            Set 1
+                            <Divider />
+                            <Typography variant="body2" color="white">
+                              {hero.setEffect1}
+                            </Typography>
+                          </Typography>
+                          <Typography
+                            variant="body2" color="#D46F94" sx={{ textAlign: "center" }}
+                          >
+                            Set 2
+                            <Divider />
+                            <Typography variant="body2" color="white">
+                              {hero.setEffect2}
+                            </Typography>
+                          </Typography>
+                          <Typography
+                            variant="body2" color="#D46F94" sx={{ textAlign: "center" }}
+                          >
+                            Set 3
+                            <Divider />
+                            <Typography variant="body2" color="white">
+                              {hero.setEffect3}
+                            </Typography>
+                          </Typography>
+                        </Stack>
+                        <Stack
+                          direction="row" alignItems="center" justifyContent="space-evenly" spacing={2} paddingBottom=".5rem"
+                        >
+                          <Typography
+                            variant="body2" color="#D46F94" sx={{ textAlign: "center" }}
+                          >
+                            Imprint Type
+                            <Divider />
+                            <Typography variant="body2" color="white">
+                              {hero.imprintType}
+                            </Typography>
+                          </Typography>
+                          <Typography
+                            variant="body2" color="#D46F94" sx={{ textAlign: "center" }}
+                          >
+                            Imprint Level
+                            <Divider />
+                            <Typography variant="body2" color="white">
+                              {hero.imprintLevel}
+                            </Typography>
+                          </Typography>
+                        </Stack>
                         <Divider sx={{ margin: 2 }} />
                         <Typography
                           sx={{ fontSize: 13, textAlign: "center" }} color="secondary" gutterBottom
@@ -113,16 +188,6 @@ export default function CompPreviewModal(props) {
                         <Stack
                           direction="row" alignItems="center" justifyContent="space-evenly" spacing={2} paddingBottom="2rem"
                         >
-                                                                              
-                        <Typography
-                          variant="body2" color="#D46F94" sx={{ textAlign: "center" }}
-                        >
-                            Artifact
-                            <Divider />
-                            <Typography variant="body2" color="white">
-                              {hero.artifact} - {hero.artifactLevel}
-                            </Typography>
-                          </Typography>
                           <Typography
                             variant="body2" color="#D46F94" sx={{ textAlign: "center" }}
                           >
