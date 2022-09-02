@@ -2,10 +2,9 @@
 import React, { useEffect, useState } from "react";
 import Container from "@mui/material/Container";
 import Grid2 from "@mui/material/Unstable_Grid2";
-import { Card, CardContent, Typography, InputLabel, Select, Chip,
+import { Card, CardContent, Typography, InputLabel, Select,
   OutlinedInput, MenuItem, FormControl, Divider, Fade, Alert, AlertTitle,
 } from "@mui/material";
-
 import CompPreviewModal from "../components/CompPreviewModal";
 import CompPreviewCard from "../components/CompPreviewCard";
 
@@ -109,7 +108,6 @@ const Comps = ({ compData }) => {
     let selectedComp = compData.find((hero) => hero._id === compId);
     setCompToView({ ...selectedComp });
     handleOpen(true);
-    console.log(compToView);
   }
 
   const teamTypes = [
@@ -121,19 +119,20 @@ const Comps = ({ compData }) => {
   const filteredContent = () => {
     if (filteredData.length <= 0) {
       return (
-        <Grid2 item md={12} xs={4}>
-          <Fade in={true}>
+        <Fade in={true}>
+          <Grid2 item md={12} xs={4}>
             <Grid2 item xs={4} md={12}>
               <Alert
                 severity="warning"
                 variant="outlined"
                 id="submission-error"
               >
-                No Compositions Were Found Matching Your Search Parameters
+                <AlertTitle>Filter Warning</AlertTitle>
+                No Compositions Were Found Matching Your Search Parameters: {contentFilter}
               </Alert>
             </Grid2>
-          </Fade>
-        </Grid2>
+          </Grid2>
+        </Fade>
       );
     } else {
       return filteredData.map((hero, index) => (
@@ -167,7 +166,7 @@ const Comps = ({ compData }) => {
       <CompPreviewModal open={open} {...compToView} handleClose={handleClose} />
       <Grid2
         container
-        spacing={3}
+        spacing={2}
         paddingTop="2rem"
         columns={{ xs: 4, sm: 8, md: 12 }}
         alignItems="stretch"
@@ -186,16 +185,6 @@ const Comps = ({ compData }) => {
               </Typography>
             </CardContent>
           </Card>
-        </Grid2>
-
-        <Grid2 item xs={4} md={12}>
-          <Divider sx={{ margin: "1rem" }}>
-            <Chip
-              variant="outlined"
-              label="Submited Composition Database"
-              sx={{ color: "#D46F94" }}
-            />
-          </Divider>
         </Grid2>
         <Grid2 item xs={4} md={12}>
           <Card>
@@ -226,27 +215,32 @@ const Comps = ({ compData }) => {
                         <em>No Filter</em>
                       </MenuItem>
                       {teamTypes.map((teamType, index) => (
-                              <MenuItem key={index} value={teamType}>
-                                {teamType}
-                              </MenuItem>
+                        <MenuItem key={index} value={teamType}>
+                          {teamType}
+                        </MenuItem>
                       ))}
                     </Select>
                   </FormControl>
                 </Grid2>
 
-                <Grid2 item md={12} xs={4}>
-                  <Divider />
+                <Grid2 item xs={4} md={12}>
+                  <Divider sx={{ margin: "1rem" }}>
+                    <Typography sx={{ color: "#D46F94" }}>
+                      Submitted Composition Data
+                    </Typography>
+                  </Divider>
                 </Grid2>
-                <Grid2
-                  container
-                  spacing={3}
-                  md={12}
-                  xs={4}
-                  paddingTop="2rem"
-                  columns={{ xs: 4, sm: 8, md: 12 }}
-                  alignItems="stretch"
-                >
-                  {filteredContent()}
+                <Grid2 item xs={4} md={12}>
+                  <Grid2
+                    container
+                    spacing={2}
+                    md={12}
+                    xs={4}
+                    paddingTop="1rem"
+                    columns={{ xs: 4, sm: 8, md: 12 }}
+                  >
+                    {filteredContent()}
+                  </Grid2>
                 </Grid2>
               </Grid2>
             </CardContent>

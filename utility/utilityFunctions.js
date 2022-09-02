@@ -25,7 +25,6 @@ const newHero = () => {
     setEffect3: "",
     imprintLevel: "",
     imprintType: "",
-    heroLevel: "",
     awakeningLevel: ""
   }
 }
@@ -53,7 +52,6 @@ const newInitialHero = () => {
     setEffect3: "",
     imprintLevel: "",
     imprintType: "",
-    heroLevel: "",
     awakeningLevel: ""
   }
 }

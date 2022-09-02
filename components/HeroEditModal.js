@@ -82,9 +82,10 @@ export default function HeroEditModal(props) {
               top: "50%",
               left: "50%",
               transform: "translate(-50%, -50%)",
-              overflow: "auto",
+              overflow: { xs: "auto", md: "hidden" },
               minWidth: { xs: "80%", md: "50%" },
               maxHeight: { xs: "75%" },
+              minHeight: { md: "55%" },
             }}
           >
             <CardHeader
@@ -96,7 +97,7 @@ export default function HeroEditModal(props) {
             />
             <CardContent>
               <Grid2 container spacing={2} columns={{ xs: 6, sm: 8, md: 12 }}>
-                <Grid2 item md={3} xs={4} mdOffset={2.5}>
+                <Grid2 item md={3} xs={4} mdOffset={3}>
                   <FormControl fullWidth variant="standard">
                     <InputLabel id="hero-name">Hero</InputLabel>
                     <Select
@@ -118,30 +119,12 @@ export default function HeroEditModal(props) {
                     </Select>
                   </FormControl>
                 </Grid2>
-                <Grid2 item md={2} xs={2}>
+
+                <Grid2 item md={3} xs={6}>
                   <FormControl fullWidth variant="standard">
-                    <InputLabel id="hero-level">Hero Level</InputLabel>
-                    <Select
-                      labelId="hero-level"
-                      id="heroLevel"
-                      label="Hero Level"
-                      variant="standard"
-                      name="heroLevel"
-                      defaultValue={props.heroInfo.heroLevel}
-                      onChange={(e) =>
-                        props.handleInputChange(e, props.heroInfo.id)
-                      }
-                    >
-                      {Array.from({ length: 60 }, (x, i) => {
-                        i++
-                        return <MenuItem value={i}>{i}</MenuItem>
-                      })}
-                    </Select>
-                  </FormControl>
-                </Grid2>
-                <Grid2 item md={2} xs={6}>
-                  <FormControl fullWidth variant="standard">
-                    <InputLabel id="awakening-level">Awakening</InputLabel>
+                    <InputLabel id="awakening-level">
+                      Awakening Level
+                    </InputLabel>
                     <Select
                       labelId="awakening-level"
                       id="awakeningLevel"
@@ -157,13 +140,13 @@ export default function HeroEditModal(props) {
                         <em>None</em>
                       </MenuItem>
                       {Array.from({ length: 15 }, (x, i) => {
-                        i++
-                        return <MenuItem value={i}>+{i}</MenuItem>
+                        i++;
+                        return <MenuItem value={i}>+{i}</MenuItem>;
                       })}
                     </Select>
                   </FormControl>
                 </Grid2>
-                <Grid2 item md={3} xs={6} mdOffset={2.5}>
+                <Grid2 item md={3.5} xs={6} mdOffset={2.5}>
                   <FormControl fullWidth variant="standard">
                     <InputLabel id="artifact-name">Artifact</InputLabel>
                     <Select
@@ -188,9 +171,10 @@ export default function HeroEditModal(props) {
                     </Select>
                   </FormControl>
                 </Grid2>
-                <Grid2 item md={4} xs={6}>
+                <Grid2 item md={3.5} xs={6}>
                   <Typography id="artifact-level" gutterBottom>
-                    Artifact Level - {getArtifactLevel() ? getArtifactLevel() : "0"}
+                    Artifact Level -{" "}
+                    {getArtifactLevel() ? getArtifactLevel() : "0"}
                   </Typography>
                   <Slider
                     sx={{ color: "#D46F94", minWidth: "98%" }}
@@ -230,8 +214,12 @@ export default function HeroEditModal(props) {
                       <MenuItem value={"None"}>
                         <em>None</em>
                       </MenuItem>
-                      <MenuItem value={"Imprint Release"}>Imprint Release</MenuItem>
-                      <MenuItem value={"Imprint Concentration"}>Imprint Concentration</MenuItem>
+                      <MenuItem value={"Imprint Release"}>
+                        Imprint Release
+                      </MenuItem>
+                      <MenuItem value={"Imprint Concentration"}>
+                        Imprint Concentration
+                      </MenuItem>
                     </Select>
                   </FormControl>
                 </Grid2>
@@ -253,8 +241,8 @@ export default function HeroEditModal(props) {
                       }
                       defaultValue={props.heroInfo.imprintLevel}
                     >
-                      <MenuItem value={""}>
-                        <em>No Filter</em>
+                      <MenuItem value={"None"}>
+                        <em>None</em>
                       </MenuItem>
                       {imprints.map((level, index) => {
                         return (
@@ -403,9 +391,7 @@ export default function HeroEditModal(props) {
                 <Grid2 item md={2} xs={3} mdOffset={2}>
                   <TextField
                     name="attack"
-                    defaultValue={
-                      props.heroInfo.attack ? props.heroInfo.attack : ""
-                    }
+                    defaultValue={ props.heroInfo.attack ? props.heroInfo.attack : "" }
                     fullWidth
                     label="Attack"
                     variant="standard"
@@ -456,7 +442,7 @@ export default function HeroEditModal(props) {
                     }
                   />
                 </Grid2>
-                
+
                 <Grid2 item md={3} xs={3}>
                   <TextField
                     name="effectiveness"
