@@ -10,6 +10,7 @@ import { useEffect, useState } from "react";
 import HeroEditModal from "../components/HeroEditModal";
 import CompHeroCard from "../components/CompHeroCard";
 import { newHero, newInitialHero } from "../utility/utilityFunctions";
+import { v4 as uuidv4 } from "uuid";
 
 export default function TeamForm() {
   // State variables
@@ -83,16 +84,19 @@ export default function TeamForm() {
     setSubmissionErrors("");
     setSubmission(true);
 
-    const newTeam = { userInfo: userInformation, teamInfo: teamInfo, heroes: [] };
-
+    let newTeam = { userInfo: userInformation, teamInfo: teamInfo, heroes: [] };
     newTeam.heroes.push(initialHero[0]);
-    newTeam.heroes.push(heroes);
+    newTeam.heroes[0].id = uuidv4();
+    for (const hero of heroes) {
+      newTeam.heroes.push(hero)
+    }
+    console.log(newTeam)
     const errors = await checkForErrors(newTeam)
 
     if (!errors) {
       try {
         await fetch(
-          "https://e7teamsdb.herokuapp.com/api/allComps",
+          "http://localhost:3000/api/allComps",
           {
             method: "POST",
             headers: {
