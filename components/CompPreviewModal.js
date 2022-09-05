@@ -3,9 +3,10 @@ import Grid2 from "@mui/material/Unstable_Grid2";
 import Container from "@mui/material/Container";
 import {
   Card, CardContent, Typography, Avatar, Stack, Button, 
-  Divider, Modal, Fade, CardHeader,
+  Divider, Modal, Fade, CardHeader, IconButton
 } from "@mui/material";
 import { allHeroInfo } from "../data/heroData";
+import CloseIcon from '@mui/icons-material/Close';
 
 export default function CompPreviewModal(props) {
   function getHeroPortrait(heroName) {
@@ -30,7 +31,7 @@ export default function CompPreviewModal(props) {
               top: "50%",
               left: "50%",
               transform: "translate(-50%, -50%)",
-              minWidth: "50%",
+              minWidth: {md: "90%", xs: "50%"},
               maxHeight: "100%",
               overflow: "auto",
               padding: '1rem'
@@ -39,12 +40,21 @@ export default function CompPreviewModal(props) {
             <CardHeader
               sx={{ color: "#D46F94" }}
               title={props.teamInfo.teamType}
-              subheader={props.teamInfo.teamDescription}
+              subheader={props.teamInfo.teamDescription + " | Submitted By: " + props.userInfo.username}
+              action={(
+                <IconButton
+                color="error"
+                aria-label="delete"
+                onClick={() => props.removeHero(props.heroInfo.id)}
+              >
+                <CloseIcon />
+              </IconButton>
+              )}
             />
             <Grid2 container spacing={1} columns={{ xs: 4, sm: 8, md: 12 }} sx={{ paddingLeft: '1rem', paddingRight: '1rem', paddingBottom: '1rem' }}>
               {props.heroes.map((hero, index) => {
                 return (
-                  <Grid2 key={index} item md={6} xs={4}>
+                  <Grid2 key={index} item md={3} xs={4}>
                     <Card sx={{ backgroundColor: "#1e1e1e" }}>
                       <CardContent>
                         <Stack

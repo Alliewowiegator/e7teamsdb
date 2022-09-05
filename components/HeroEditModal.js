@@ -141,7 +141,7 @@ export default function HeroEditModal(props) {
                       <MenuItem value={"None"}>
                         <em>None</em>
                       </MenuItem>
-                      {Array.from({ length: 15 }, (x, i) => {
+                      {Array.from({ length: 6 }, (x, i) => {
                         i++;
                         return <MenuItem value={i}>+{i}</MenuItem>;
                       })}
