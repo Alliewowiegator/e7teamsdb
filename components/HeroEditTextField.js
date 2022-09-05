@@ -1,17 +1,19 @@
-// import React from "react";
-// import Grid2 from "@mui/material/Unstable_Grid2";
-// import Container from "@mui/material/Container";
-// import {
-//   Modal, Card, CardContent, Fade, CardHeader, IconButton,
-//   InputLabel, Select, MenuItem, FormControl, Divider, TextField,
-//   Avatar, Slider, Input, Typography
-// } from "@mui/material";
+import React from "react";
+import { TextField } from "@mui/material";
 
-// export default function HeroEditModal(props) {
-
-//   // Todo: Refactor textfields in to their own components and other stuff
-
-//   return (
-//     null
-//   );
-// }
+export default function HeroEditTextField(props) {
+  return (
+    <TextField
+      name={props.stat}
+      defaultValue={
+        props.heroInfo[props.stat] ? props.heroInfo[props.stat] : ""
+      }
+      fullWidth
+      label={`${props.text}`}
+      variant="standard"
+      onChange={(e) =>
+        props.handleInputChange(e, props.heroInfo.id)
+      }
+    />
+  );
+}

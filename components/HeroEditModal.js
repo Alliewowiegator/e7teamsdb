@@ -2,15 +2,12 @@ import React from "react";
 import Grid2 from "@mui/material/Unstable_Grid2";
 import Container from "@mui/material/Container";
 import {
-  Modal, Card, CardContent, Fade, CardHeader, IconButton,
-  InputLabel, Select, MenuItem, FormControl, Divider, TextField,
-  Avatar, Slider, Input, Typography
+  Modal, Card, CardContent, Fade, CardHeader, InputLabel, Select, 
+  MenuItem, FormControl, Divider, TextField, Avatar, Slider, Typography
 } from "@mui/material";
 import { allHeroInfo } from "../data/heroData";
 import { allArtifactInfo } from "../data/artifactData";
-import LinkIcon from "@mui/icons-material/Link";
-import DeleteIcon from "@mui/icons-material/Delete";
-import EditIcon from "@mui/icons-material/Edit";
+import HeroEditTextField from "./HeroEditTextField";
 
 export default function HeroEditModal(props) {
   function getHeroPortrait() {
@@ -65,12 +62,21 @@ export default function HeroEditModal(props) {
 
   const imprints = ["B", "A", "S", "SS", "SSS"]
 
-  // Todo: Refactor textfields in to their own components and other stuff
+  const heroStats = {
+    attack: "Attack",
+    defense: "Defense",
+    health: "Health",
+    speed: "Speed",
+    criticalHitChance: "Critical Hit Chance",
+    criticalHitDamage: "Critical Hit Damage",
+    effectiveness: "Effectiveness",
+    effectResistance: "Effect Resistance",
+    dualAttackChance: "Dual Attack Chance",
+  };
 
   return (
     <Container maxWidth="lg">
-      <Modal open={props.open} onClose={props.handleClose}
-      >
+      <Modal open={props.open} onClose={props.handleClose}>
         <Fade in={props.open}>
           <Card
             sx={{
@@ -384,155 +390,18 @@ export default function HeroEditModal(props) {
                 <Grid2 item md={12} xs={6}>
                   <Divider sx={{ margin: "1rem" }} />
                 </Grid2>
-                <Grid2 item md={2} xs={3} mdOffset={2}>
-                  <TextField
-                    name="attack"
-                    defaultValue={ props.heroInfo.attack ? props.heroInfo.attack : "" }
-                    fullWidth
-                    label="Attack"
-                    variant="standard"
-                    onChange={(e) =>
-                      props.handleInputChange(e, props.heroInfo.id)
-                    }
-                  />
-                </Grid2>
-                <Grid2 item md={2} xs={3}>
-                  <TextField
-                    name="defense"
-                    defaultValue={
-                      props.heroInfo.defense ? props.heroInfo.defense : ""
-                    }
-                    fullWidth
-                    label="Defense"
-                    variant="standard"
-                    onChange={(e) =>
-                      props.handleInputChange(e, props.heroInfo.id)
-                    }
-                  />
-                </Grid2>
-                <Grid2 item md={2} xs={3}>
-                  <TextField
-                    name="health"
-                    defaultValue={
-                      props.heroInfo.health ? props.heroInfo.health : ""
-                    }
-                    fullWidth
-                    label="Health"
-                    variant="standard"
-                    onChange={(e) =>
-                      props.handleInputChange(e, props.heroInfo.id)
-                    }
-                  />
-                </Grid2>
-                <Grid2 item md={2} xs={3}>
-                  <TextField
-                    name="speed"
-                    defaultValue={
-                      props.heroInfo.speed ? props.heroInfo.speed : ""
-                    }
-                    fullWidth
-                    label="Speed"
-                    variant="standard"
-                    onChange={(e) =>
-                      props.handleInputChange(e, props.heroInfo.id)
-                    }
-                  />
-                </Grid2>
-
-                <Grid2 item md={3} xs={3}>
-                  <TextField
-                    name="effectiveness"
-                    defaultValue={
-                      props.heroInfo.effectiveness
-                        ? props.heroInfo.effectiveness
-                        : ""
-                    }
-                    fullWidth
-                    label="Effectiveness"
-                    variant="standard"
-                    onChange={(e) =>
-                      props.handleInputChange(e, props.heroInfo.id)
-                    }
-                  />
-                </Grid2>
-                <Grid2 item md={3} xs={3}>
-                  <TextField
-                    name="effectResistance"
-                    defaultValue={
-                      props.heroInfo.effectResistance
-                        ? props.heroInfo.effectResistance
-                        : ""
-                    }
-                    fullWidth
-                    label="Effect Resistance"
-                    variant="standard"
-                    onChange={(e) =>
-                      props.handleInputChange(e, props.heroInfo.id)
-                    }
-                  />
-                </Grid2>
-                <Grid2 item md={3} xs={3}>
-                  <TextField
-                    name="criticalHitChance"
-                    defaultValue={
-                      props.heroInfo.criticalHitChance
-                        ? props.heroInfo.criticalHitChance
-                        : ""
-                    }
-                    fullWidth
-                    label="Critical Hit Chance"
-                    variant="standard"
-                    onChange={(e) =>
-                      props.handleInputChange(e, props.heroInfo.id)
-                    }
-                  />
-                </Grid2>
-                <Grid2 item md={3} xs={3}>
-                  <TextField
-                    name="criticalHitDamage"
-                    defaultValue={
-                      props.heroInfo.criticalHitDamage
-                        ? props.heroInfo.criticalHitDamage
-                        : ""
-                    }
-                    fullWidth
-                    label="Critical Hit Damage"
-                    variant="standard"
-                    onChange={(e) =>
-                      props.handleInputChange(e, props.heroInfo.id)
-                    }
-                  />
-                </Grid2>
-                <Grid2 item md={3} mdOffset={3} xs={3}>
-                  <TextField
-                    name="dualAttackChance"
-                    defaultValue={
-                      props.heroInfo.dualAttackChance
-                        ? props.heroInfo.dualAttackChance
-                        : ""
-                    }
-                    fullWidth
-                    label="Dual Attack Chance"
-                    variant="standard"
-                    onChange={(e) =>
-                      props.handleInputChange(e, props.heroInfo.id)
-                    }
-                  />
-                </Grid2>
-                <Grid2 item md={3} xs={3}>
-                  <TextField
-                    name="power"
-                    defaultValue={
-                      props.heroInfo.power ? props.heroInfo.power : ""
-                    }
-                    fullWidth
-                    label="Combat Power"
-                    variant="standard"
-                    onChange={(e) =>
-                      props.handleInputChange(e, props.heroInfo.id)
-                    }
-                  />
-                </Grid2>
+                {Object.entries(heroStats).map(([key, value], index) => {
+                  return (
+                    <Grid2 key={index} item md={3} xs={6} mdOffset={index === 8 ? 3 : 0} >
+                      <HeroEditTextField
+                        stat={key}
+                        text={value}
+                        handleInputChange={props.handleInputChange}
+                        heroInfo={props.heroInfo}
+                      />
+                    </Grid2>
+                  );
+                })}
               </Grid2>
             </CardContent>
           </Card>

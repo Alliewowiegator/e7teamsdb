@@ -11,94 +11,7 @@ import CompPreviewCard from "../components/CompPreviewCard";
 const Comps = ({ compData }) => {
   const [filteredData, setFilteredData] = useState(compData);
   const [contentFilter, setContentFilter] = useState("");
-  const [compToView, setCompToView] = useState({
-    _id: "",
-    userInfo: {
-      username: "",
-      server: "",
-      _id: "",
-    },
-    teamInfo: {
-      teamType: "",
-      teamDescription: "",
-      _id: "",
-    },
-    heroes: [
-      {
-        id: "",
-        necklaceStat: "",
-        ringStat: "",
-        bootStat: "",
-        name: "",
-        power: null,
-        attack: null,
-        defense: null,
-        health: null,
-        speed: null,
-        criticalHitChance: "",
-        criticalHitDamage: "",
-        effectiveness: "",
-        effectResistance: "",
-        dualAttackChance: "",
-        _id: "",
-      },
-      {
-        id: "",
-        necklaceStat: "",
-        ringStat: "",
-        bootStat: "",
-        name: "",
-        power: null,
-        attack: null,
-        defense: null,
-        health: null,
-        speed: null,
-        criticalHitChance: "",
-        criticalHitDamage: "",
-        effectiveness: "",
-        effectResistance: "",
-        dualAttackChance: "",
-        _id: "",
-      },
-      {
-        id: "",
-        necklaceStat: "",
-        ringStat: "",
-        bootStat: "",
-        name: "Ilynav",
-        power: null,
-        attack: null,
-        defense: null,
-        health: null,
-        speed: null,
-        criticalHitChance: "",
-        criticalHitDamage: "",
-        effectiveness: "",
-        effectResistance: "",
-        dualAttackChance: "",
-        _id: "",
-      },
-      {
-        id: "",
-        necklaceStat: "",
-        ringStat: "",
-        bootStat: "",
-        name: "",
-        power: null,
-        attack: null,
-        defense: null,
-        health: null,
-        speed: null,
-        criticalHitChance: "",
-        criticalHitDamage: "",
-        effectiveness: "",
-        effectResistance: "",
-        dualAttackChance: "",
-        _id: "",
-      },
-    ],
-    __v: 0,
-  });
+  const [compToView, setCompToView] = useState();
   const [open, setOpen] = useState(false);
 
   const handleClose = () => setOpen(false);
@@ -163,7 +76,7 @@ const Comps = ({ compData }) => {
 
   return (
     <Container maxWidth="lg">
-      <CompPreviewModal open={open} {...compToView} handleClose={handleClose} />
+      {compToView ? <CompPreviewModal open={open} {...compToView} handleClose={handleClose} /> : null}
       <Grid2
         container
         spacing={2}

@@ -2,9 +2,8 @@ import React from "react";
 import Grid2 from "@mui/material/Unstable_Grid2";
 import Container from "@mui/material/Container";
 import {
-  Card, CardContent, Typography, CardActions, Avatar, Stack, Button, 
-  IconButton, Divider, Modal, Fade, FormControl, InputLabel, Select, 
-  MenuItem, TextField, Paper, CardHeader,
+  Card, CardContent, Typography, Avatar, Stack, Button, 
+  Divider, Modal, Fade, CardHeader,
 } from "@mui/material";
 import { allHeroInfo } from "../data/heroData";
 
@@ -188,15 +187,6 @@ export default function CompPreviewModal(props) {
                         <Stack
                           direction="row" alignItems="center" justifyContent="space-evenly" spacing={2} paddingBottom="2rem"
                         >
-                          <Typography
-                            variant="body2" color="#D46F94" sx={{ textAlign: "center" }}
-                          >
-                            Power
-                            <Divider />
-                            <Typography variant="body2" color="white">
-                              {hero.power}
-                            </Typography>
-                          </Typography>
                           <Typography
                             variant="body2" color="#D46F94" sx={{ textAlign: "center" }}
                           >

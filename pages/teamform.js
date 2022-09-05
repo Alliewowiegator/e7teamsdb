@@ -5,7 +5,6 @@ import {
   CardContent, Card, Button, TextField, MenuItem, Box, FormControl, InputLabel,
   Select, Typography, Fade,  ButtonGroup, CircularProgress, Backdrop, Alert, AlertTitle, Stack, Divider, 
 } from "@mui/material";
-
 import { useEffect, useState } from "react";
 import HeroEditModal from "../components/HeroEditModal";
 import CompHeroCard from "../components/CompHeroCard";
@@ -96,7 +95,7 @@ export default function TeamForm() {
     if (!errors) {
       try {
         await fetch(
-          "http://localhost:3000/api/allComps",
+          "https://e7teamsdb.herokuapp.com/api/allComps",
           {
             method: "POST",
             headers: {

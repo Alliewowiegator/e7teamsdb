@@ -21,7 +21,6 @@ const CompositionSchema = new mongoose.Schema({
         ringStat: { type: String },
         bootStat: { type: String },
         name: { type: String },
-        power: { type: Number },
         attack: { type: Number },
         defense: { type: Number },
         health: { type: Number },
