@@ -392,7 +392,7 @@ export default function HeroEditModal(props) {
                 </Grid2>
                 {Object.entries(heroStats).map(([key, value], index) => {
                   return (
-                    <Grid2 key={index} item md={3} xs={6} mdOffset={index === 8 ? 3 : 0} >
+                    <Grid2 key={index} item md={3} xs={6} mdOffset={index === 8 ? 4.5 : 0} >
                       <HeroEditTextField
                         stat={key}
                         text={value}
