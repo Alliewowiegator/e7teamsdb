@@ -45,7 +45,7 @@ export default function CompPreviewModal(props) {
                 <IconButton
                 color="error"
                 aria-label="delete"
-                onClick={() => props.removeHero(props.heroInfo.id)}
+                onClick={() => props.handleClose()}
               >
                 <CloseIcon />
               </IconButton>
@@ -53,6 +53,8 @@ export default function CompPreviewModal(props) {
             />
             <Grid2 container spacing={1} columns={{ xs: 4, sm: 8, md: 12 }} sx={{ paddingLeft: '1rem', paddingRight: '1rem', paddingBottom: '1rem' }}>
               {props.heroes.map((hero, index) => {
+                let heroLength = index + 1
+                console.log(heroLength)
                 return (
                   <Grid2 key={index} item md={3} xs={4}>
                     <Card sx={{ backgroundColor: "#1e1e1e" }}>
@@ -292,7 +294,7 @@ export default function CompPreviewModal(props) {
                   </Grid2>
                 );
               })}
-              <Grid2 item md={6} mdOffset={3} xs={4}>
+              <Grid2 item md={12} xs={4}>
                   <Button
                     size="small" variant="outlined" color="secondary" fullWidth onClick={() => props.handleClose()}
                   >
