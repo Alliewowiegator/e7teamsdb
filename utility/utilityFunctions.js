@@ -28,6 +28,10 @@ const newHero = () => {
   }
 }
 
+const getHeroPortrait = (hero) => {
+
+}
+
 const newInitialHero = () => {
   return {
     necklaceStat : "",

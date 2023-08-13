@@ -42,9 +42,6 @@ export default function CompPreviewCard(props) {
                         <LinkIcon />
 
                     </IconButton>
-                    <Typography sx={{ fontSize: 12 }} color="secondary">
-                        {props.userInfo.username}
-                    </Typography>
                 </CardActions>
             </Card>
         </Container>

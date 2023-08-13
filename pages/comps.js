@@ -165,7 +165,7 @@ const Comps = ({ compData }) => {
 };
 
 Comps.getInitialProps = async () => {
-  const res = await fetch("https://e7teamsdb.herokuapp.com/api/allComps");
+  const res = await fetch("https://e7-teamsdb.netlify.app/api/allComps");
   const { data } = await res.json();
 
   return { compData: data };
