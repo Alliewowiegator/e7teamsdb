@@ -40,7 +40,6 @@ const Comps = ({ compData }) => {
                 variant="outlined"
                 id="submission-error"
               >
-                <AlertTitle>Filter Warning</AlertTitle>
                 No Compositions Were Found Matching Your Search Parameters: {contentFilter}
               </Alert>
             </Grid2>
@@ -68,7 +67,6 @@ const Comps = ({ compData }) => {
           (composition) => composition.teamInfo.teamType === contentFilter
         )
       );
-      console.log(filteredData);
     } else {
       setFilteredData(compData);
     }
@@ -165,7 +163,7 @@ const Comps = ({ compData }) => {
 };
 
 Comps.getInitialProps = async () => {
-  const res = await fetch("https://e7-teamsdb.netlify.app/api/allComps");
+  const res = await fetch(process.env.DB_URL_WEB ? process.env.DB_URL_WEB : process.env.DB_URL_DEV);
   const { data } = await res.json();
 
   return { compData: data };

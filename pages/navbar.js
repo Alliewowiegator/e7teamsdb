@@ -63,7 +63,6 @@ const Navbar = () => {
                 <Link
                   key={page}
                   href={page == "New Composition" ? "/teamform" : "/comps"}
-                  prefetch={true}
                   passHref
                 >
                   <MenuItem key={page} onClick={handleCloseNavMenu}>
@@ -115,7 +114,6 @@ const Navbar = () => {
               <Link
                 key={page}
                 href={page == "New Composition" ? "/teamform" : "/comps"}
-                prefetch={true}
                 passHref
               >
                 <Button

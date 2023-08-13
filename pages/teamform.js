@@ -89,13 +89,13 @@ export default function TeamForm() {
         for (const hero of heroes) {
             newTeam.heroes.push(hero)
         }
-        console.log(newTeam)
+
         const errors = await checkForErrors(newTeam)
 
         if (!errors) {
             try {
                 await fetch(
-                    "https://e7-teamsdb.netlify.app/api/allComps",
+                    process.env.DB_URL_WEB ? process.env.DB_URL_WEB : process.env.DB_URL_DEV,
                     {
                         method: "POST",
                         headers: {

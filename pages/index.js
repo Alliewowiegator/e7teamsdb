@@ -60,7 +60,7 @@ export default function Home() {
             <CardMedia
               component="img"
               height="275"
-              image="/static/images/example-comp.png"
+              image="../static/images/example-comp.png"
               alt="example composition"
             />
             <CardContent>
@@ -81,7 +81,7 @@ export default function Home() {
             <CardMedia
               component="img"
               height="275"
-              image="/static/images/example-comp-view.png"
+              image="../static/images/example-comp-view.png"
               alt="example composition"
             />
             <CardContent>

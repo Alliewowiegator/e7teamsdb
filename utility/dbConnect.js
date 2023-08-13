@@ -7,13 +7,12 @@ async function dbConnect() {
     return;
   }
 
-  const db = await mongoose.connect("mongodb+srv://Aessandria:TestPassword1@cluster0.l79jczi.mongodb.net/?retryWrites=true&w=majority", {
+  const db = await mongoose.connect(process.env.DB_AUTH, {
     useNewUrlParser: true,
     useUnifiedTopology: true
   })
 
   connection.isConnected = db.connections[0].readyState;
-  console.log(connection.isConnected);
 }
 
 export default dbConnect;

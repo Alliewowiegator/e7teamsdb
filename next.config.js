@@ -1,6 +1,6 @@
 module.exports = {
   env: {
-    MONGO_URI: process.env.MONGO_DB_URI
+    DB_URL_DEV: "http://localhost:3000/api/allComps"
   },
   reactStrictMode: true,
   swcMinify: true,
