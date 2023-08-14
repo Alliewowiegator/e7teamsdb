@@ -7,7 +7,7 @@ import { Card, CardContent, Typography, InputLabel, Select,
 } from "@mui/material";
 import CompPreviewModal from "../components/CompPreviewModal";
 import CompPreviewCard from "../components/CompPreviewCard";
-
+import { getDbUrl } from "../utility/utilityFunctions";
 const Comps = ({ compData }) => {
   const [filteredData, setFilteredData] = useState(compData);
   const [contentFilter, setContentFilter] = useState("");
@@ -163,9 +163,8 @@ const Comps = ({ compData }) => {
 };
 
 Comps.getInitialProps = async () => {
-  const res = await fetch(process.env.DB_URL_WEB ? process.env.DB_URL_WEB : process.env.DB_URL_DEV);
+  const res = await fetch("https://e7-teamsdb.netlify.app/api/allComps");
   const { data } = await res.json();
-
   return { compData: data };
 };
 

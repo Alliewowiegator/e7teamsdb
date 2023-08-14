@@ -58,4 +58,8 @@ const newInitialHero = () => {
   }
 }
 
-export { newHero, newInitialHero };
+const getDbUrl = async () => {
+  return process.env.DB_URL_WEB ? process.env.DB_URL_WEB : process.env.DB_URL_DEV;
+}
+
+export { newHero, newInitialHero, getDbUrl };

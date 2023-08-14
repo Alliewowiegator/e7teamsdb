@@ -95,7 +95,7 @@ export default function TeamForm() {
         if (!errors) {
             try {
                 await fetch(
-                    process.env.DB_URL_WEB ? process.env.DB_URL_WEB : process.env.DB_URL_DEV,
+                    "https://e7-teamsdb.netlify.app/api/allComps",
                     {
                         method: "POST",
                         headers: {
