@@ -16,7 +16,7 @@ const CompHyperlink = ({compData}) => {
 
 CompHyperlink.getInitialProps = async ({query}) => {
     const {id} = query;
-    const res = await fetch("http://localhost:3000/api/allComps", {
+    const res = await fetch("https://e7-teamsdb.netlify.app/api/allComps", {
         method: 'GET',
         headers: {service: 'compId', id: id}
     });

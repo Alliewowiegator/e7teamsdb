@@ -162,7 +162,7 @@ const AllComps = ({ compData }) => {
 };
 
 AllComps.getInitialProps = async () => {
-  const res = await fetch("http://localhost:3000/api/allComps", { method: 'GET', headers : { service: 'allComps'} });
+  const res = await fetch("https://e7-teamsdb.netlify.app/api/allComps", { method: 'GET', headers : { service: 'allComps'} });
   const { data } = await res.json();
   return { compData: data };
 };
