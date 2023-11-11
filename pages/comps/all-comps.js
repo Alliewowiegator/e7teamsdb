@@ -89,7 +89,7 @@ const AllComps = ({ compData }) => {
               </Typography>
               <Typography variant="body1">
                 This page will allow you to view all compositions submitted by
-                other users. Here you can view each one indvidually, sort by
+                other users. Here you can view each one individually, sort by
                 what you need, or link directly to them to share around. A lot
                 of this is subject to change and I am actively working on it.
               </Typography>
