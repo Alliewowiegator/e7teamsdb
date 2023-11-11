@@ -62,7 +62,7 @@ const Navbar = () => {
               {pages.map((page) => (
                 <Link
                   key={page}
-                  href={page == "New Composition" ? "/teamform" : "/comps"}
+                  href={page == "New Composition" ? "/teamform" : "/comps/all-comps"}
                   passHref
                 >
                   <MenuItem key={page} onClick={handleCloseNavMenu}>
@@ -113,7 +113,7 @@ const Navbar = () => {
             {pages.map((page) => (
               <Link
                 key={page}
-                href={page == "New Composition" ? "/teamform" : "/comps"}
+                href={page === "New Composition" ? "/teamform" : "/comps/all-comps"}
                 passHref
               >
                 <Button

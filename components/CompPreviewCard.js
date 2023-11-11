@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import Grid2 from '@mui/material/Unstable_Grid2';
 import Container from '@mui/material/Container';
 import {
@@ -10,6 +10,10 @@ import { allHeroInfo } from '../data/heroData';
 
 export default function CompPreviewCard(props) {
 
+
+    const getCompositionHyperlink = () => {
+        navigator.clipboard.writeText('https://e7-teamsdb.netlify.app/comps/' + props._id);
+    }
     function getHeroPortrait(heroName) {
         let heroToReturn = allHeroInfo.find((hero) => hero.value === heroName);
         return heroToReturn.image;
@@ -39,7 +43,9 @@ export default function CompPreviewCard(props) {
                         size='small'
                         aria-label="delete"
                         color="secondary" >
-                        <LinkIcon />
+                        <LinkIcon
+                            onClick={() => getCompositionHyperlink() }
+                        />
 
                     </IconButton>
                 </CardActions>

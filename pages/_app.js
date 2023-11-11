@@ -2,6 +2,7 @@ import { ThemeProvider } from '@mui/system'
 import PropTypes from 'prop-types';
 import '../styles/globals.css'
 import Navbar from './navbar'
+import CompHyperlink from "./comps/[id]";
 import { CacheProvider } from '@emotion/react';
 import { createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';

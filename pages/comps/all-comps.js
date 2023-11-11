@@ -5,10 +5,9 @@ import Grid2 from "@mui/material/Unstable_Grid2";
 import { Card, CardContent, Typography, InputLabel, Select,
   OutlinedInput, MenuItem, FormControl, Divider, Fade, Alert, AlertTitle,
 } from "@mui/material";
-import CompPreviewModal from "../components/CompPreviewModal";
-import CompPreviewCard from "../components/CompPreviewCard";
-import { getDbUrl } from "../utility/utilityFunctions";
-const Comps = ({ compData }) => {
+import CompPreviewModal from "../../components/CompPreviewModal";
+import CompPreviewCard from "../../components/CompPreviewCard";
+const AllComps = ({ compData }) => {
   const [filteredData, setFilteredData] = useState(compData);
   const [contentFilter, setContentFilter] = useState("");
   const [compToView, setCompToView] = useState();
@@ -162,10 +161,10 @@ const Comps = ({ compData }) => {
   );
 };
 
-Comps.getInitialProps = async () => {
-  const res = await fetch("https://e7-teamsdb.netlify.app/api/allComps");
+AllComps.getInitialProps = async () => {
+  const res = await fetch("http://localhost:3000/api/allComps", { method: 'GET', headers : { service: 'allComps'} });
   const { data } = await res.json();
   return { compData: data };
 };
 
-export default Comps;
+export default AllComps;
