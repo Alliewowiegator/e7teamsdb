@@ -29,7 +29,7 @@ const Navbar = () => {
   return (
     <AppBar position="static">
       <Container maxWidth="x1">
-        <Toolbar disableGutters sx={{backgroundColor: '#2B2730'}}>
+        <Toolbar disableGutters>
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" }, }}>
             <IconButton
               size="large"
@@ -130,9 +130,5 @@ const Navbar = () => {
     </AppBar>
   );
 };
-
-Navbar.propTypes = {};
-
-Navbar.defaultProps = {};
 
 export default Navbar;
