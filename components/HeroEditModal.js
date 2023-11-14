@@ -180,10 +180,11 @@ export default function HeroEditModal(props) {
                                                        handleInputChange={props.handleInputChange}
                                     />
 
-                                    <HeroEditAccordion {...artifactAccordionData}
-                                                       heroInfo={props.heroInfo}
+                                    <HeroEditAccordion heroInfo={props.heroInfo}
                                                        handleInputChange={props.handleInputChange}
+                                                       getArtifactLevel={getArtifactLevel()}
                                     />
+
                                 </Grid2>
                                 <Grid2 item xs={6} md={12}>
                                     <Divider sx={{margin: "1rem"}} />

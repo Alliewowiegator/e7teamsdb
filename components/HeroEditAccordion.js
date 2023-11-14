@@ -2,8 +2,9 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
-import {FormControl, InputLabel, MenuItem, Select, Typography} from "@mui/material";
+import {FormControl, InputLabel, MenuItem, Select, Typography, Slider} from "@mui/material";
 import React from "react";
+import {allArtifactInfo} from "../data/artifactData";
 
 export default function HeroEditAccordion(props) {
 
@@ -12,7 +13,7 @@ export default function HeroEditAccordion(props) {
             return (
                 props.inputs.map((input, index) => {
                     return (
-                        <FormControl key={index} fullWidth variant="standard" sx={{minWidth: 120}}>
+                        <FormControl key={index} fullWidth variant="standard" sx={{minWidth: 120}} margin='normal'>
                             <InputLabel id={input.name}>{input.name}</InputLabel>
                             <Select
                                 labelId={input.name}
@@ -34,6 +35,53 @@ export default function HeroEditAccordion(props) {
                     )
                 })
             )
+        } else {
+            return (
+                <FormControl fullWidth variant="standard" margin='normal'>
+                    <InputLabel id="artifact-name">Artifact</InputLabel>
+                    <Select
+                        labelId="artifact-name"
+                        id={`artifactName${props.index}`}
+                        label="Artifact Name"
+                        variant="standard"
+                        name="artifact"
+                        defaultValue={props.heroInfo.artifact}
+                        onChange={(e) =>
+                            props.handleInputChange(e, props.heroInfo.id)
+                        }
+                    >
+                        <MenuItem value={"None"}>
+                            <em>None</em>
+                        </MenuItem>
+                        {allArtifactInfo.map((artifactInfo, index) => (
+                            <MenuItem key={index} value={artifactInfo.value}>
+                                {artifactInfo.value}
+                            </MenuItem>
+                        ))}
+                    </Select>
+                    <Typography id="artifact-level" gutterBottom>
+                        Artifact Level -{" "}
+                        {props.getArtifactLevel ? props.getArtifactLevel : "0"}
+                    </Typography>
+                    <Slider
+                        sx={{color: "#D46F94", minWidth: "98%"}}
+                        max={30}
+                        step={1}
+                        variant="standard"
+                        id="artifact-level"
+                        marks={Array.from({length: 31}, (x, i) => {
+                            return i % 5 === 0 ? {value: i, label: `${i}`} : "";
+                        })}
+                        name="artifactLevel"
+                        defaultValue={props.heroInfo.artifactLevel}
+                        onChange={(e) =>
+                            props.handleInputChange(e, props.heroInfo.id)
+                        }
+                        aria-labelledby="artifact-level"
+                    />
+                </FormControl>
+
+            )
         }
     }
 
@@ -44,7 +92,7 @@ export default function HeroEditAccordion(props) {
                 aria-controls="panel1a-content"
                 id="panel1a-header"
             >
-                <Typography>{props.panelName}</Typography>
+                <Typography>{props.panelName ? props.panelName : 'Artifact Data'}</Typography>
             </AccordionSummary>
             <AccordionDetails>
                 {buildAccordion()}
