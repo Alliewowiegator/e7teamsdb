@@ -14,25 +14,26 @@ import {v4 as uuidv4} from "uuid";
 export default function TeamForm() {
     // State variables
     const [submissionErrors, setSubmissionErrors] = useState("");
-    const [heroIndex, setHeroIndex] = useState(0);
     const [successfulSubmission, setSuccessfulSubmission] = useState(false);
     const [submission, setSubmission] = useState(false);
-    const [heroToEdit, setEditHero] = useState({});
-    const [heroes, setHeroes] = useState([]);
-    const [open, setOpen] = useState(false);
-    const [initialHero, setInitialHero] = useState([newInitialHero()]);
 
-    const handleClose = () => setOpen(false);
-    const handleOpen = () => setOpen(true);
+    const [initialHero, setInitialHero] = useState([newInitialHero()]);
+    const [heroToEdit, setEditHero] = useState({});
+    const [heroIndex, setHeroIndex] = useState(0);
+    const [heroes, setHeroes] = useState([]);
+
     const [userInformation, setUserInformation] = useState({
         username: "",
         server: "",
     });
-
     const [teamInfo, setTeamInfo] = useState({
         teamType: "",
         teamDescription: "",
     });
+
+    const handleClose = () => setOpen(false);
+    const handleOpen = () => setOpen(true);
+    const [open, setOpen] = useState(false);
 
     const teamTypes = [
         "Wyvern", "Banshee", "Golem", "Guild War Defense", "Guild War Offense",
@@ -41,34 +42,32 @@ export default function TeamForm() {
     ];
     const servers = ["Global", "Korea", "Other"];
 
-    function checkForErrors(newTeam) {
-        let dataError = false;
+    async function checkForErrors(newTeam) {
         if (!newTeam.userInfo.username || !newTeam.userInfo.server) {
             setSubmissionErrors("Missing username or server information...");
             setSubmission(false);
-            dataError = true;
+
         } else if (!newTeam.teamInfo.teamType || !newTeam.teamInfo.teamDescription) {
             setSubmissionErrors("Missing team type or description...");
             setSubmission(false);
-            dataError = true;
         } else if (!newTeam.heroes[0].name) {
             setSubmissionErrors("At least one hero needs to be selected...");
             setSubmission(false);
-            dataError = true;
+
         }
 
-        if (!dataError) {
+        if (submissionErrors !== "") {
             newTeam.heroes.forEach((hero, index) => {
                 for (const [key, value] of Object.entries(hero)) {
                     if (!value) {
                         setSubmissionErrors(`Please re-check data for Hero #${index + 1} as they are missing data or stats... `);
                         setSubmission(false);
-                        dataError = true;
+
                     }
                 }
             });
         }
-        return dataError;
+        return submissionErrors === ""
     }
 
     function resetInputs() {
@@ -83,16 +82,12 @@ export default function TeamForm() {
         setSubmissionErrors("");
         setSubmission(true);
 
-        let newTeam = {userInfo: userInformation, teamInfo: teamInfo, heroes: []};
-        newTeam.heroes.push(initialHero[0]);
-        newTeam.heroes[0].id = uuidv4();
-        for (const hero of heroes) {
-            newTeam.heroes.push(hero)
-        }
+        const initialHeroInfo = [initialHero]
+        initialHeroInfo[0].id = uuidv4();
 
-        const errors = await checkForErrors(newTeam)
+        let newTeam = {userInfo: userInformation, teamInfo: teamInfo, heroes: initialHeroInfo.concat(heroes)};
 
-        if (!errors) {
+        if (!await checkForErrors(newTeam)) {
             try {
                 await fetch(
                     "https://e7-teamsdb.netlify.app/api/allComps",
@@ -124,6 +119,7 @@ export default function TeamForm() {
             alertFailure.scrollIntoView({block: "center", behavior: "smooth"});
             setSubmission(false);
         }
+
     }
 
     useEffect(() => {

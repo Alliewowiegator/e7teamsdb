@@ -17,7 +17,7 @@ export default function Home() {
     <Container maxWidth="lg">
       <Head>
         <title>E7 Teams DB</title>
-        <meta name='description' content='Database for team Compositions in Epic Seven' />
+        <meta name='description' content='Database for Team Compositions in Epic Seven' />
       </Head>
       <Grid2
         container
